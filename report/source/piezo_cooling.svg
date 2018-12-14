@@ -367,11 +367,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="506.95906"
-     inkscape:cy="468.68104"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="329.01119"
+     inkscape:cy="954.97957"
      inkscape:document-units="mm"
-     inkscape:current-layer="g4386-6"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
@@ -844,23 +844,30 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="59.298199"
-       y="247.39479"
+       x="47.958912"
+       y="202.03766"
        id="text4409"><tspan
          sodipodi:role="line"
-         id="tspan4411"
-         x="59.298199"
-         y="247.39479"
-         style="font-size:11.28888893px;line-height:1.25">Feedback-</tspan><tspan
-         sodipodi:role="line"
-         x="59.298199"
-         y="261.50589"
+         x="47.958912"
+         y="202.03766"
          id="tspan4413"
-         style="font-size:11.28888893px;line-height:1.25">mechanism</tspan></text>
+         style="font-size:11.28888893px;line-height:1.25">Feedback-mechanism</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 163.07005,245.68425 H 274.82434 V 133.92995 H 238.33315"
        id="path4415"
        inkscape:connector-curvature="0" />
+    <path
+       style="fill:#0000ff;stroke:#000000;stroke-width:0.09852033px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -65.475244,163.34085 8.060753,-12.91382 0.06397,4.08046 16.918495,-10.51888 v 7.96166 l -16.918495,10.51887 v 4.14338 z"
+       id="path943"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:#0000ff;stroke:#000000;stroke-width:0.09172862px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -16.784296,38.136645 7.5050705,7.50507 -3.7991665,0.05956 v 15.752183 h -7.412795 V 45.701276 h -3.85774 z"
+       id="path943-3-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
   </g>
 </svg>
