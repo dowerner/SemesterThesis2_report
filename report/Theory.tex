@@ -1,0 +1,66 @@
+\chapter{Theory}
+The aim of this chapter is to offer a brief introduction into the basics of the trapping experiment and the cavity theory necessary to discuss the fabrication process of the microcavity mirrors. It will by no means offer a complete picture nor a formal derivation of the physics involved in the trapping of a nanosphere, but will highlight the important results made in more rigorous works concerned with the topic.
+
+\section{Laser trapping}\label{ChapLaserTrapping}
+At the heart of the experiment which we want to improve with the fabrication of microcavity mirrors is the levitated nanosphere which is made from siliciumdioxid. The trapping of the nanoparticle is achieved with a highly focused laser beam which effectively traps the particle. We speak of cooling because the motion of the particle is reduced by its isolation from the environment. If trapped in vacuum only residual air molecules will collide with the particle causing a certain randomness to its oscillating movement.
+
+\begin{figure}[H]
+	\includesvg[scale=0.5]{source/trapping}
+	\caption{A glass nanoparticle is trapped by a strongly focused laser beam. Residual air molecules collide with the particle which gives rise to small force. (based on an illustration found in [ref])}
+\end{figure}
+
+The question is, how can the tightly focused laser beam trap the nanoparticle? To answer this question we have to use an appropriate physical description of the situation at hand. The size of the particle is approximately $150\nm$. Because the particle is so small ($2r<<\lambda$) we may treat it as a dipole with polarizability $\alpha=\alpha'+i\alpha''$. This is very useful since for determining the optical forces which are at play here we need to know the full description of the electric and magnetic fields. We further assume that our laser is a monochromatic source of a single wavelength $\lambda$. In this case the time-averaged optical force is which acts on the particle at position $\vc{r}=(r_x, r_y, r_z)^T$ only depends on the incident field [ref]. 
+\begin{equation}
+	\av{\field{F}{opt}}(\vc{r})=\frac{\alpha'}{2}\sum\limits_{i}\Re\left\{\de{E}{i}^*(\vc{r})\nabla\de{E}{i}(\vc{r})\right\}+\frac{\alpha''}{2}\sum\limits_{i}\Im\left\{\de{E}{i}^*(\vc{r})\nabla\de{E}{i}(\vc{r})\right\}\;\;\;, i\in\{x,y,z\}
+\end{equation}
+The electric field in the equation stated above refers to the complex electric field which defines the time-dependent, real field.
+\begin{equation}\label{EqFopt}
+	\field{E}{i}(\vc{r},t)=\Re\left\{\field{E}{i}(\vc{r})e^{-i\omega t}\right\}
+\end{equation}
+Where the angular frequency is defined as $\omega=2\pi c_0/\lambda$. The first part of \autoref{EqFopt} can be rewritten, such that it becomes obvious why this term is called the \textit{gradient force}.
+\begin{equation}
+	\av{\field{F}{grad}}(\vc{r})=\frac{\alpha'}{4}\nabla\left(\field{E}{i}(\vc{R})\cdot\field{E}{i}^*(\vc{r})\right)=\frac{\alpha'}{2c_0\varepsilon_0}\nabla I(\vc{r})
+\end{equation} 
+This force scales with the gradient of the electric field intensity $I(\vc{r})$. The particles used in the experiment all have a polarizability with positive real part which means that they are attracted to intensity maxima. The formal treatment of the second term in \autoref{EqFopt} does not yield itself to the same transformation. It is called the \textit{scattering force}.
+\begin{equation}\label{EqScatteringForce}
+	\av{\field{F}{scat}}(\vc{r})=\frac{\alpha''}\omega\mu_0\av{\vc{S}}(\vc{r})-i\frac{\alpha''}{4}\left[\nabla\times\left(\field{E}{i}(\vc{r})\times\field{E}{i}(\vc{r})\right)\right]
+\end{equation}
+While the gradient force is conservative ($\nabla\times\av{\field{F}{grad}}=0$) and does not do any work on the particle the same cannot be said about the scattering force. The first term in \autoref{EqScatteringForce} points in the direction of the \textit{time averaged pointing vector} $\av{\vc{S}}$ which means the force pushes in the direction of the power flux. The second term has to do with the spin density of the light field [maybe ref again].\\
+The electrostatic polarizablility of a spherical particle with permittivity $\varepsilon_{\si{p}}$ and radius $a$, surrounded by a material of permittivity $\varepsilon_{\si{m}}$ is given by [ref]:
+\begin{equation}
+	\alpha_{\si{p}}(\omega)=4\varepsilon_0\pi a^3\frac{\varepsilon_{\si{p}}(\omega)-\varepsilon_{\si{m}}(\omega)}{\varepsilon_{\si{p}}(\omega)+2\varepsilon_{\si{m}}(\omega)}
+\end{equation}
+In our case the particle is situated in vacuum which leads to $\varepsilon_{\si{m}}=1$. Since $\varepsilon_{\si{m}}$ in general can be absorptive and have an imaginary part we ought to apply a correction to the polarizability [ref].
+\begin{equation}
+	\alpha(\omega)=\frac{\alpha_{\si{p}}(\omega)}{1-i\frac{k^3}{6\pi\varepsilon_0}\alpha_{\si{p}}(\omega)}\approx\alpha_{\si{p}}(\omega)+i\frac{k^3}{6\pi\varepsilon_0}\alpha_{\si{p}}^2(\omega)
+\end{equation}
+This defines $\alpha'=\alpha_{\si{p}}$ and $\alpha''=k^3/(6\pi\varepsilon_0)\alpha'^2$. From this we can see that the gradient force scales linearly with the particle volume $V=4/3\pi a^3$ and the scattering force with $V^2$. This means the gradient force is dominant for nanosized particles and that trapping requires no additional cooling.\\
+To illustrate how the optical forces can trap the particle, we have plotted the field intensities and the forces along the three axis in [autoref]. For this calculation a Gaussian beam was chosen even tough quantitatively speaking this is not correct. Since we have a tightly focused beam this model is not sufficient. On the other hand, qualitatively speaking this simple model illustrates nicely the effect that also occurs in other models which are more suitable for a tightly focused beam [ref].
+(calculate the gradient force and field intensities in x, y, y  maybe use complex origin fields)
+
+\section{Feedback Cooling}
+Once the particle is trapped inside the beam it oscillates with a resonance frequency $\de{\Omega}{p}$ around the focus point. The equation of motion can be defined as:
+\begin{equation}
+	m\ddot{\vc{r}}(t)+m\gamma\dot{\vc{r}}(t)+\field{F}{grad}(t)=\field{F}{fluct}(t)+\field{F}{scat}(t)+\sum\limits\vc{F}
+\end{equation}
+Since there are still air molecules around the particle we have a damping with damping rate $\gamma$. $\field{F}{fluct}$ is the total fluctuating force. The last term represents all the additional forces that may act on the particle. From this equation the resonance frequency $\de{\Omega}{p}$ of the particle can be extracted.\\
+With the knowledge about the particles movement the cooling aims at cancelling it. This means that once the particle moves away from a defined center point, the feedback mechanism tells the setup to readjust. Since the oscillations of the particle are taking place in the nanometer regime, this can be implemented by moving the trapping laser with a piezo-stage [ref].
+
+\section{Cavity particle detection}
+Previously we discussed how a feedback mechanism can be used to account for sudden displacements of the particle. There exist different methods how to detect the particles position and motion. This work focuses on a mechanism that uses an optical cavity to acquire information about the particles location and movement.\\
+\begin{figure}[H]
+	\includesvg[scale=0.7]{source/cavity_detection_principle}
+	\caption{•}
+\end{figure}
+
+
+\section{Figures of merit}
+
+\subsection{Sensing factor}\label{ChapSensingFactor}
+\begin{equation}\label{EqSensingFactor}
+	S\propto\frac{\mathcal{F}}{L}
+\end{equation}
+
+\subsection{Information retrieval rate}\label{ChapInformationRetrievalRate}
+
+\subsection{Detection efficiency}

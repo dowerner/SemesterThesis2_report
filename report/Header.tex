@@ -1,0 +1,146 @@
+\documentclass[a4paper,11pt,BCOR11mm,toc=bibliography]{scrbook} % mod 12 pt BCOR11mm
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{dsfont}
+\usepackage[makeroom]{cancel} % for crossing out terms in Eqs.
+
+\usepackage{geometry}
+\geometry{a4paper,top=3.2cm,bottom=4.8cm,left=3.1cm,right=3.1cm,heightrounded,bindingoffset=0mm}
+
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks   = true, 
+  urlcolor     = black, 
+  linkcolor    = black,
+  citecolor   = black 
+}
+
+\graphicspath{{../pics/}}           %set subdirectory for figures
+\usepackage{floatrow}   % for side figures that can be shifted
+
+\usepackage{booktabs}  %for nice tables
+\usepackage{textcomp}  %for upright \mu in units, use \textmu
+\usepackage{wrapfig}   %for wrapped figures
+
+\usepackage[english]{babel}  %language specific support
+\usepackage{cite}                   %e.g. multiple citations appear as [1-5] instead of [1,2,3,4,5]
+
+%headings /footnote controls:
+%    \usepackage[automark]{scrpage2}
+%    \pagestyle{scrheadings} \clearscrheadfoot
+%    %\renewcommand*\chaptermarkformat{}  %switch off chapter numbering in headline
+%    %\renewcommand*\sectionmarkformat{}  %switch off section numbering in headline
+%    \lehead{\pagemark\quad\headmark}
+%    \rohead{\headmark\quad\pagemark}
+%    %\ohead{\pagemark}       % page numbering on headline, outside
+%    %\chead{\headmark}       % chapter/section title on headline, centered
+%
+%    \renewcommand{\headfont}{\sffamily\slshape}  %font of chapter/section title
+%    \renewcommand{\pnumfont}{\sffamily\bfseries} %font of page number
+%    \setheadsepline[text]{.4pt}   % line under the headings
+
+
+%figure captions:
+    \addtokomafont{captionlabel}{\sffamily\bfseries}  %bold figure labels
+    \setcapindent{2em}                              %figure caption indents
+    \usepackage{sidecap}  %allow for captions left from the figure \begin{SCfigure}...
+
+%margin changes:
+    \addtolength{\topmargin}{1.5em}  %shift everything down by X
+%    \setlength{\oddsidemargin}{5mm} 
+%    \setlength{\evensidemargin}{5mm}
+
+%\usepackage[numbers,square]{natbib}
+
+%BIBLATEX:
+    %\usepackage[style=science,article-title,maxnames=1000]{biblatex}
+    %\renewcommand{\mkbibbrackets}[1]{[#1]}
+    %\addbibresource{eit} \addbibresource{phdthesis_misc}
+    %\addbibresource{D:/Lab_Software/literature/paper_others}
+    
+% general
+\newcommand{\tol}[3]{\hbox{\rule{0pt}{15pt}${#1}^{+{#2}}_{-{#3}}$}} % assymetric error bars
+\newcommand{\f}[2]{#1 [#2]}  %function defintition with [], forced in by Anna :D
+\newcommand{\F}[2]{#1 \left[#2\right]}
+\newcommand{\dx}{\,\mathrm{d}x} % for integral
+\newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
+\newcommand{\avg}[1]{\overline{#1}} % for average
+\newcommand{\real}[0]{\ensuremath{\text{Re}}} % real part
+\newcommand{\imag}[0]{\ensuremath{\text{Im}}} % imaginary part
+
+% color boxes for marking to dos
+\usepackage{color}
+\newcommand{\cbox}[1]{\colorbox{yellow}{#1}}   % roter Text in gelber Box
+% encircled numbers
+\usepackage{tikz}
+\definecolor{Myblue}{cmyk}{0.71,0.53,0,0.12}
+\newcommand{\kreis}[1]{{\tiny \textcolor{Myblue}{\tikz \node[draw,circle]{#1};}}}
+\newcommand{\pos}[1]{{\textcolor{Myblue}{Pos.~#1}}}
+
+%QUANTUM
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\prj}[1]{\ket{#1}\bra{#1}}
+\newcommand{\ketbra}[2]{\ket{#1}\bra{#2}}
+\newcommand{\expect}[1]{\left< #1 \right>} % for expectaiotn value
+\newcommand{\Tr}[1]{{\rm Tr} \left[#1 \right]} % trace
+\newcommand{\ua}[0]{{\ket{\uparrow}}} % spin up
+\newcommand{\da}[0]{{\ket{\downarrow}}} % spin down
+
+% units
+\usepackage{xspace}
+
+\newcommand{\amu}{\,\ensuremath{\text{u}}\xspace}
+
+\newcommand{\muK}{\,\ensuremath{\mu\text{K}}\xspace}
+\newcommand{\mK}{\,\ensuremath{\text{mK}}\xspace}
+
+\newcommand{\ohm}{\,\ensuremath{\Omega}\xspace} % \xspace ensures correct spacing after command
+\newcommand{\kohm}{\,\ensuremath{\text{k}\Omega}\xspace}
+\newcommand{\Mohm}{\,\ensuremath{\text{M}\Omega}\xspace}
+
+\newcommand{\rad}{\,\ensuremath{\text{rad}}\xspace}
+
+\newcommand{\mbar}{\,\ensuremath{\text{mbar}}\xspace}
+
+\newcommand{\ps}{\,\ensuremath{\text{ps}}\xspace}
+\newcommand{\ns}{\,\ensuremath{\text{ns}}\xspace}
+\newcommand{\mus}{\,\ensuremath{\mu\text{s}}\xspace}
+\newcommand{\ms}{\,\ensuremath{\text{ms}}\xspace}
+\newcommand{\s}{\,\ensuremath{\text{s}}\xspace}
+
+\newcommand{\m}{\,\ensuremath{\text{m}}\xspace}
+\newcommand{\cm}{\,\ensuremath{\text{cm}}\xspace}
+\newcommand{\mm}{\,\ensuremath{\text{mm}}\xspace}
+\newcommand{\mum}{\,\ensuremath{\mu\text{m}}\xspace}
+\newcommand{\nm}{\,\ensuremath{\text{nm}}\xspace}
+\newcommand{\pim}{\,\ensuremath{\text{pm}}\xspace}
+\newcommand{\fm}{\,\ensuremath{\text{fm}}\xspace}
+
+\newcommand{\G}{\,\ensuremath{\text{G}}\xspace}
+
+\newcommand{\counts}{\,\ensuremath{\text{ms}^{-1}}\xspace}
+
+\newcommand{\Hz}{\,\ensuremath{\text{Hz}}\xspace}
+\newcommand{\kHz}{\,\ensuremath{\text{kHz}}\xspace}
+\newcommand{\MHz}{\,\ensuremath{\text{MHz}}\xspace}
+\newcommand{\GHz}{\,\ensuremath{\text{GHz}}\xspace}
+\newcommand{\THz}{\,\ensuremath{\text{THz}}\xspace}
+
+\newcommand{\dB}{\,\ensuremath{\text{dB}}\xspace}
+\newcommand{\dBm}{\,\ensuremath{\text{dBm}}\xspace}
+\newcommand{\dBc}{\,\ensuremath{\text{dBc}}\xspace}
+
+\newcommand{\mV}{\,\ensuremath{\text{mV}}\xspace}
+\newcommand{\V}{\,\ensuremath{\text{V}}\xspace}
+\newcommand{\kV}{\,\ensuremath{\text{kV}}\xspace}
+
+\newcommand{\mA}{\,\ensuremath{\text{mA}}\xspace}
+\newcommand{\muA}{\,\ensuremath{\mu\text{A}}\xspace}
+
+\newcommand{\muW}{\,\ensuremath{\mu\text{W}}\xspace}
+\newcommand{\mW}{\,\ensuremath{\text{mW}}\xspace}
+\newcommand{\W}{\,\ensuremath{\text{W}}\xspace}
+\newcommand{\kW}{\,\ensuremath{\text{kW}}\xspace}

@@ -1,0 +1,49 @@
+%\documentclass[a4paper,12pt,BCOR12mm,toc=bibliography]{scrbook}
+\input{Header.tex}
+\usepackage{siunitx}
+\usepackage{svg}
+\usepackage{amsmath}
+%\usepackage{graphicx}
+\usepackage{geometry}
+
+\newcommand{\um}{\ensuremath{\,\si{\micro m}}}
+\newcommand{\ppm}{\ensuremath{\,\si{ppm}}}
+\newcommand{\degrees}{\ensuremath{\,\si{^\circ C}}}
+\newcommand{\ul}{\ensuremath{\,\si{\micro l}}}
+\newcommand{\rpm}{\ensuremath{\,\si{rpm}}}
+
+\newcommand{\av}[1]{\ensuremath{\langle #1\rangle}}
+\newcommand{\vc}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\de}[2]{\ensuremath{#1_{\si{#2}}}}
+\newcommand{\field}[2]{\ensuremath{\de{\vc{#1}}{#2}}}
+
+
+% redeclare math operators
+\input{RedeclareMathoperatorCommand.tex}
+\RedeclareMathOperator{\Re}{Re}
+\RedeclareMathOperator{\Im}{Im}
+
+\begin{document}
+	
+\input{Frontpage.tex}
+\frontmatter
+
+\input{Abstract}
+\tableofcontents
+
+\mainmatter
+
+\input{Introduction.tex}
+\input{Theory.tex}
+\input{Fabrication.tex}
+\input{Results.tex}
+\input{Conclusions.tex}
+\input{Appendix.tex}
+
+\backmatter
+\bibliographystyle{rene}
+\bibliography{master_bib}
+
+\input{Aknowledgements}
+
+\end{document}
