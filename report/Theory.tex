@@ -1,19 +1,19 @@
 \chapter{Theory}
-The aim of this chapter is to offer a brief introduction into the basics of the trapping experiment and the cavity theory necessary to discuss the fabrication process of the microcavity mirrors. It will by no means offer a complete picture nor a formal derivation of the physics involved in the trapping of a nanosphere, but will highlight the important results made in more rigorous works concerned with the topic.
+The aim of this chapter is to offer a brief introduction into the basics of particle trapping and cavity theory. Those ingredients are necessary to discuss the design choices made regarding the cavity mirrors. This has a big impact on the fabrication process which this project aims to develop. This chapter will by no means offer a complete picture nor a formal derivation of all the physics involved, but will highlight the important results made in more rigorous works concerned with the topics.
 
 \section{Laser trapping}\label{ChapLaserTrapping}
-At the heart of the experiment which we want to improve with the fabrication of microcavity mirrors is the levitated nanosphere which is made from siliciumdioxid. The trapping of the nanoparticle is achieved with a highly focused laser beam which effectively traps the particle. We speak of cooling because the motion of the particle is reduced by its isolation from the environment. If trapped in vacuum only residual air molecules will collide with the particle causing a certain randomness to its oscillating movement.
+At the heart of the experiment which we want to improve by fabricating microcavity mirrors, is a levitated nanosphere which is made from siliciumdioxid. The trapping of the nanoparticle is achieved with a highly focused laser beam which effectively traps the particle. We speak of cooling because the motion of the particle is reduced by its isolation from the environment. If trapped in vacuum only residual air molecules will collide with the particle causing a certain randomness to its oscillating movement.
 
 \begin{figure}[H]
 	\includesvg[scale=0.5]{source/trapping}
 	\caption{A glass nanoparticle is trapped by a strongly focused laser beam. Residual air molecules collide with the particle which gives rise to small force. (based on an illustration found in [ref])}
 \end{figure}
 
-The question is, how can the tightly focused laser beam trap the nanoparticle? To answer this question we have to use an appropriate physical description of the situation at hand. The size of the particle is approximately $150\nm$. Because the particle is so small ($2r<<\lambda$) we may treat it as a dipole with polarizability $\alpha=\alpha'+i\alpha''$. This is very useful since for determining the optical forces which are at play here we need to know the full description of the electric and magnetic fields. We further assume that our laser is a monochromatic source of a single wavelength $\lambda$. In this case the time-averaged optical force is which acts on the particle at position $\vc{r}=(r_x, r_y, r_z)^T$ only depends on the incident field [ref]. 
+The question is, how can the tightly focused laser beam trap the nanoparticle? To answer this question we have to use an appropriate physical description of the situation at hand. The diameter of the particle is below $200\nm$. Because the particle is so small ($2r\ll \lambda$) we may treat it as a dipole with polarizability $\alpha=\alpha'+i\alpha''$. This is very useful since for determining the optical forces which are at work here we need to know the full description of the electric and magnetic fields. We further assume that our laser is a monochromatic source of a single wavelength $\lambda$. In this case the time-averaged optical force which acts on the particle at position $\vc{r}=(r_x, r_y, r_z)^T$ only depends on the incident field [ref]. 
 \begin{equation}
 	\av{\field{F}{opt}}(\vc{r})=\frac{\alpha'}{2}\sum\limits_{i}\Re\left\{\de{E}{i}^*(\vc{r})\nabla\de{E}{i}(\vc{r})\right\}+\frac{\alpha''}{2}\sum\limits_{i}\Im\left\{\de{E}{i}^*(\vc{r})\nabla\de{E}{i}(\vc{r})\right\}\;\;\;, i\in\{x,y,z\}
 \end{equation}
-The electric field in the equation stated above refers to the complex electric field which defines the time-dependent, real field.
+The electric field in the equation stated above refers to the complex electric field which defines the monochromatic, time-dependent, real field.
 \begin{equation}\label{EqFopt}
 	\field{E}{i}(\vc{r},t)=\Re\left\{\field{E}{i}(\vc{r})e^{-i\omega t}\right\}
 \end{equation}
@@ -31,41 +31,130 @@ The electrostatic polarizablility of a spherical particle with permittivity $\va
 	\alpha_{\si{p}}(\omega)=4\varepsilon_0\pi a^3\frac{\varepsilon_{\si{p}}(\omega)-\varepsilon_{\si{m}}(\omega)}{\varepsilon_{\si{p}}(\omega)+2\varepsilon_{\si{m}}(\omega)}
 \end{equation}
 In our case the particle is situated in vacuum which leads to $\varepsilon_{\si{m}}=1$. Since $\varepsilon_{\si{m}}$ in general can be absorptive and have an imaginary part we ought to apply a correction to the polarizability [ref].
-\begin{equation}
+\begin{equation}\label{EqPolarizability}
 	\alpha(\omega)=\frac{\alpha_{\si{p}}(\omega)}{1-i\frac{k^3}{6\pi\varepsilon_0}\alpha_{\si{p}}(\omega)}\approx\alpha_{\si{p}}(\omega)+i\frac{k^3}{6\pi\varepsilon_0}\alpha_{\si{p}}^2(\omega)
 \end{equation}
-This defines $\alpha'=\alpha_{\si{p}}$ and $\alpha''=k^3/(6\pi\varepsilon_0)\alpha'^2$. From this we can see that the gradient force scales linearly with the particle volume $V=4/3\pi a^3$ and the scattering force with $V^2$. This means the gradient force is dominant for nanosized particles and that trapping requires no additional cooling.\\
-To illustrate how the optical forces can trap the particle, we have plotted the field intensities and the forces along the three axis in [autoref]. For this calculation a Gaussian beam was chosen even tough quantitatively speaking this is not correct. Since we have a tightly focused beam this model is not sufficient. On the other hand, qualitatively speaking this simple model illustrates nicely the effect that also occurs in other models which are more suitable for a tightly focused beam [ref].
-(calculate the gradient force and field intensities in x, y, y  maybe use complex origin fields)
+This defines $\alpha'=\alpha_{\si{p}}$ and $\alpha''=k^3/(6\pi\varepsilon_0)\alpha'^2$. From this we can see that the gradient force scales linearly with the particle volume $V=4/3\pi a^3$ and the scattering force with $V^2$. As a consequence the gradient force is dominant for nano-sized particles which enables the trapping with just one beam of light.
+
+%% Do calculation if there is time left
+%To illustrate how the optical forces can trap the particle, we have plotted the field intensities and the forces along the three axis in [autoref]. For this calculation a Gaussian beam was chosen even tough quantitatively speaking this is not correct. Since we have a tightly focused beam this model is not sufficient. On the other hand, qualitatively speaking this simple model illustrates nicely the effect that also occurs in other models which are more suitable for a tightly focused beam [ref].
+%(calculate the gradient force and field intensities in x, y, y  maybe use complex origin fields)
 
 \section{Feedback Cooling}
-Once the particle is trapped inside the beam it oscillates with a resonance frequency $\de{\Omega}{p}$ around the focus point. The equation of motion can be defined as:
+Once the particle is trapped inside the beam it oscillates with a resonance frequency $\de{\Omega}{mech}$ around the point of the beam's focus. The equation of motion can be defined as [ref]:
 \begin{equation}
 	m\ddot{\vc{r}}(t)+m\gamma\dot{\vc{r}}(t)+\field{F}{grad}(t)=\field{F}{fluct}(t)+\field{F}{scat}(t)+\sum\limits\vc{F}
 \end{equation}
-Since there are still air molecules around the particle we have a damping with damping rate $\gamma$. $\field{F}{fluct}$ is the total fluctuating force. The last term represents all the additional forces that may act on the particle. From this equation the resonance frequency $\de{\Omega}{p}$ of the particle can be extracted.\\
-With the knowledge about the particles movement the cooling aims at cancelling it. This means that once the particle moves away from a defined center point, the feedback mechanism tells the setup to readjust. Since the oscillations of the particle are taking place in the nanometer regime, this can be implemented by moving the trapping laser with a piezo-stage [ref].
+Since there are still air molecules around the particle we have a damping with damping rate $\gamma$. $\field{F}{fluct}$ is the total fluctuating force. The last term represents all the additional forces that may act on the particle. From this equation the resonance frequency $\de{\Omega}{mech}$ of the particle can be extracted.\\
+With the knowledge about the particles movement the cooling aims can counteract it. This means that once the particle moves away from a defined center point, the feedback mechanism tells the setup to readjust. Since the oscillations of the particle are taking place in the nanometer regime, this can be implemented by moving the trapping laser with a piezo-stage [ref]. \autoref{fig:PiezoCooling} shows a schematic depiction on how the laser is mounted onto the piezo-stage. However, this figure only depicts the detection-scheme symbolically as the specific form of detection will be discussed in the next section.
 \begin{figure}[H]
-    \includesvg[scale=0.25]{source/piezo_cooling}
-    \caption{Caption}
+    \includesvg[scale=0.23]{source/piezo_cooling}
+    \caption{This illustration shows the setup with an arbitrary detection mechanism and a blackbox which controls the piezo-stage the laser is mounted upon. In reality the setup is placed within a vacuum chamber and detection schemes which are based on the trapping beam itself are usually made of multiple photo-diodes to capture the movement in all three spatial directions [ref].}
     \label{fig:PiezoCooling}
 \end{figure}
 
-\section{Cavity particle detection}
-Previously we discussed how a feedback mechanism can be used to account for sudden displacements of the particle. There exist different methods how to detect the particles position and motion. This work focuses on a mechanism that uses an optical cavity to acquire information about the particles location and movement.\\
+\section{Cavity particle detection}\label{ChapCavityDetection}
+Previously we discussed how a feedback mechanism can be used to account for displacements of the particle for a defined center position. There exist different methods how to detect the particles position and motion. This work focuses on a mechanism that uses an optical cavity to acquire information about the particles location and movement.\\
+Cavities are made from two aligned mirrors as depicted in \autoref{fig:CavityDetection}, wherein an electric field can form a standing wave, depending on the cavity length and the wavelength of the field.
+
 \begin{figure}[H]
 	\includesvg[scale=0.7]{source/cavity_detection_principle}
-	\caption{•}
+	\caption{This figure shows a standing wave inside of the a cavity. The resonance of the cavity is $\de{\omega}{c}$. Through the introduction of the particle into the cavity, the refractive index changes partly. Since light travels slower in glass than in vacuum the resonance frequency shifts by the small frequency offset $\Delta\omega$.}
+	\label{fig:CavityDetection}
 \end{figure}
 
+When a glass particle is inserted into the cavity it will change the material composition of the cavity. Now the light travels through vacuum and additionally through glass in which it travels slower. This effect results in a longer optical path length and therefore in the shift to a lower resonance frequency $\de{\omega}{c}-\Delta\omega$, $\de{\omega}{c}$ being the cavity resonance frequency without particle. The influence $\Delta\omega$ of the particle directly depends on the ratio between the cavity volume and the volume of the particle [ref].
+\begin{equation}\label{EqFreqShift}
+	\Delta\omega=\frac{3\de{V}{p}}{4\de{V}{c}}\frac{\de{\varepsilon}{p}-1}{\de{\varepsilon}{p}+2}=\frac{\pi a^3}{\de{V}{c}}\frac{\de{\varepsilon}{p}-1}{\de{\varepsilon}{p}+2}
+\end{equation}
+\begin{figure}[H]
+	\includesvg[scale=0.6]{source/cavity_detuning_plot}
+	\caption{It can be seen that the detuning depends on the ratio of the particle volume and mode volume.}
+\end{figure}
+Where $a$ is the radius of the glass particle and $\de{\varepsilon}{p}\approx 3.9$ its relative, dielectric permittivity. The right last equality in \autoref{EqFreqShift} comes from the fact that the particle is a sphere.\\
+We have seen that the system's sensitivity can be controlled with our parameter $\Delta\Omega$. The question now still remains how we can determine the particles offset from the center position. For measurements we have a photo-diode placed at one end of the cavity. We know want to show how the particles offset can be determined by looking at the intensity of the transmitted light. In principle we would need to look at the dipole radiation of the nanoparticle that is scattered into the cavity and calculate the mode overlap [ref]. For simplicity we look at the intensity profile inside of the cavity and consider the overlap integral as being only dependent on the position of the particle inside of this intensity distribution.
 
-\section{Figures of merit}
-
-\subsection{Sensing factor}\label{ChapSensingFactor}
-\begin{equation}\label{EqSensingFactor}
-	S\propto\frac{\mathcal{F}}{L}
+\begin{equation}
+	I(z)=I_0w_0^2\left[1+\left(\frac{z}{\de{z}{R}}\right)^2\right]\cos^2(kz)
 \end{equation}
 
+Qualitatively, if the overlap is taken at a position where the intensity of the cavity mode is zero, then the overlap will also be zero.
+
+\begin{figure}[H]
+	\includesvg[scale=0.7]{source/particle_pos_intensity}
+	\caption{This plot shows the intensity at the detector changes even if the particle has an offset of only several nanometers. This enables feedback cooling with a cavity as detector.}
+\end{figure}
+
+As can be seen, it is easily possible to detect tiny positional offsets with a cavity. This effect increases when $\Delta\omega$ gets larger. This ultimately motivates why we want to fabricate microcavities.\\
+
+\section{Asymmetric cavity}
+Up until this point, we have not mentioned how exactly the cavity geometry will be chosen. There exists a wide array of different cavities, all with different advantages and drawbacks (for some examples see \autoref{fig:CavityStabilityDiagram}). Ideally we want to have a cavity with a mode volume as small as possible, in order to increase the sensitivity with regard to the particle. A concentric cavity offers the smallest possible mode volume with an intensity maximum at the center. However, cavities can become unstable. This happens if the light cannot be refocused and will therefore at one point leave the cavity sideways after multiple reflections. In laser theory there exist two stability parameters which can be used to determine if a cavity is stable.
+\begin{equation}
+	g_1=1-\frac{L}{R_1}
+\end{equation}
+\begin{equation}
+	g_2=1-\frac{L}{R_2}
+\end{equation}
+Where $R_1$ and $R_2$ are the radii of curvature of both cavity mirrors. The condition for a stable cavity is given by the following condition [ref]:
+\begin{equation}
+	0\geq g_1g_2\geq 1
+\end{equation}
+If this condition is plotted (see \autoref{fig:CavityStabilityDiagram}) it can be seen what kinds of cavities are considered stable.
+
+\begin{figure}[H]
+	\includesvg[scale=0.7]{source/cavity_stability_diagram_with_illustration}
+	\caption{This diagram allows to determine if a cavity is stable. All cavities that lie within the shaded area can be considered stable.}
+	\label{fig:CavityStabilityDiagram}
+\end{figure}
+
+From this we see that the concentric cavity might have the smallest mode volume, but it is also obvious that a small misalignment will lead to an unstable cavity. Choosing instead a \textit{half-symmetrical cavity} leads to a bigger mode volume but at the same time the two $g$-parameters do not have to be matched exactly during alignment. This makes the half-symmetrical cavity much better for implementation in a real setup. One might argue that one drawback of the half-symmetrical cavity is that at the location where the nanoparticle will sit the local maximum is not as high as in the concentric case and the intensity seen on the detector therefore weaker. While this argument is valid in principle it has to be considered that the beam divergence inside the microcavity is almost negligible from the point of view of the intensity distribution. This means that the drawback is certainly there but in a real application not very important.
+
+\section{Figures of merit}
+Previously we looked at how small cavities can be utilized to detect the offset of a nanoparticle. To asses what requirements such a cavity has to meet we need to have some figures of merit. This section will introduce three important figures of merit and briefly explain how they will influence the final result.
+
 \subsection{Information retrieval rate}\label{ChapInformationRetrievalRate}
+If the mirrors used for the cavity have a near $100\,\%$ reflectivity, then the light that resonates inside of the cavity will only leave the cavity after many round trips. This means that the photon lifetime inside of the cavity is large. The inverse of the cavity lifetime is the cavity linewidth defined as follows [ref].
+
+\begin{equation}
+	\kappa = \frac{\pi c_0}{\mathcal{F}L}
+\end{equation}
+
+A small linewidth means that the quality factor of the resonator is high. In the case of cavities this means that also the \textit{finesse} $\mathcal{F}$ is high. While it is often the case that a high finesse is desirable, in the case of sensing this is a problem. Qualitatively speaking, if the light that is traveling through the cavity and picks up information about the nanoparticle, never leaves the cavity and hits the detector, the information cannot be retrieved. Quantitatively, this means that linewidth $\kappa$ has to be bigger than the oscillation frequency of the particle $\de{\Omega}{mech}$. According to the \textit{Nyquist-Shannon sampling theorem} [ref], the following relation has to hold:
+
+\begin{equation}
+	\kappa > 2\cdot\de{\Omega}{mech}
+\end{equation}
+
+So as an additional figure of merit, we define an information retrieval rate which is directly proportional to the cavity linewidth.
+
+\begin{equation}
+	\de{\gamma}{information}\propto \frac{\pi c_0}{\mathcal{F}L}
+\end{equation}
+
+\subsection{Sensing factor}\label{ChapSensingFactor}
+As we have seen in \autoref{ChapCavityDetection}, the sensitivity of the cavity particle detection depends on the ratio of the cavity mode volume and the particle volume. Since the volume of the nanoparticle is restricted to have a diameter of less than $200\nm$ we need to shrink the cavity itself. It is important that the frequency shift $\Delta\omega$ is bigger than the cavity linewidth $\kappa$. Otherwise the particles presence would not perturb the cavity. The \textit{sensing factor} can then be defined as follows:
+
+\begin{equation}\label{EqS}
+	S=\frac{\Delta\omega}{\kappa}
+\end{equation}
+
+To get this quantity in different terms we look at the situation at hand. Our half-symmetrical cavity has a mode volume that is given by [ref]:
+\begin{equation}
+	\de{V}{c}=\frac{\pi}{4}w_0^2L=\frac{\pi}{4}\frac{L\lambda}{\pi}L=\frac{\lambda L^2}{4}
+\end{equation}
+
+If we plug this into \autoref{EqFreqShift} and \autoref{EqS} we get:
+
+\begin{equation}\label{EqSensingFactor}
+	S=\frac{6V}{\lambda^2}\frac{\de{\varepsilon}{p}-1}{\de{\varepsilon}{p}+2}\frac{\mathcal{F}}{L}\propto\frac{\mathcal{F}}{L}
+\end{equation}
 
 \subsection{Detection efficiency}
+When the light of the trapping beam hits the nanoparticle it will scatter parts of it. This scattered light is forms standing waves inside of the cavity, based on the modes that are available. The \textit{local density of optical states (LDOS)} describes the available modes. In a cavity the LDOS is enhanced by the \textit{Purcell effect}. This means that light will more likely generate modes in the region of the higher LDOS than outside of the cavity. The more light is coupled into the cavity the higher the \textit{detection efficiency} of the particle gets. Therefore, the detection efficiency can be defined directly as the \textit{Purcell factor} [ref].
+
+\begin{equation}
+	f=\frac{6\lambda^2}{\pi^3}\frac{\mathcal{F}}{w_0^2}
+\end{equation}
+
+\subsection{Medium-high finesse}
+We have defined three figures of merit: The \textit{information retrieval rate} $\de{\gamma}{information}$, the \textit{sensing factor} $S$ and the \textit{detection efficiency} $f$ which is essentially the Purcell factor. By looking at the definitions of those three quantities we see that in order to enhance them the finesse has to be high for $d$ and $f$. However, $\de{\gamma}{information}$ is inversely proportional to the finesse which means that it should not be too high. Therefore, we have chosen to aim for \textit{medium-high finesse} in order to have good sensing and detection efficiency while at the same time making sure that the sampling rate can be achieved by having a sufficient linewidth. The cavity length is also subject to some restrictions and cannot be made arbitrarily small, this will be the topic of \autoref{ChapCavityLength}.
