@@ -1,0 +1,23 @@
+We start by looking at our situation sketched in \autoref{fig:TrapGaussOverlap}.
+\begin{figure}[H]
+	\includesvg[scale=0.65]{source/dipole_gauss_overlap}
+	\caption{The particle in the trapping beam will act as a radiating dipole, radiating part of the incoming power into the cavity mode. The overlap integral at a plane outside of one of the two mirrors helps to determine what power comes out of the cavity depending on the trapping beam and the particles position.}
+	\label{fig:TrapGaussOverlap}
+\end{figure}
+As described earlier our particle in this case can be viewed as a dipole. The trapping light polarizes the particle dipole which starts to radiate partly into the cavity. Since we will look at the radiation at a distance $R\gg \lambda$ it is sufficient to consider the far field amplitude [ref].
+
+\begin{equation}\label{EqDipoleRad}
+	\de{E}{rad}(R, \theta)=\frac{k^2\sin\theta}{4\pi\varepsilon_0}\frac{e^{ikR}}{R}\alpha \de{E}{trap}
+\end{equation}
+The $\alpha$ in the above formula is the same that we saw in \autoref{EqPolarizability}. The cavity mode is described by a Gaussian beam. We need to determine what portion of the dipole radiation is transferred to the cavity mode. The amplitude of the normalized mode function is:
+
+\begin{equation}
+	\de{e}{M}(\rho, z)=\sqrt{\frac{2}{\pi w^2(z)}}\exp\left(-\frac{\rho^2}{w^2(z)}+ikz+i\frac{\rho^2}{2z}-i\frac{\pi}{2}\right)
+\end{equation}
+
+Where $w=w_0\sqrt{1+\left(z/z_R\right)^2}$ is the beam waist radius, $z_R$ is the Rayleigh-range and the Gouy phase is assumed to be $\pi/2$ since we are at $z\gg z_R$ [ref]. For the calculation of the mode field we can make some simplifications. The position of our integration plane means that we can assume $\sin\theta\approx 1$ and $e^{ikR}/R\approx e^{ikz+ik\rho^2/(2z)/z}$ in \autoref{EqDipoleRad}.
+
+\begin{equation}
+	\de{E}{M}(\rho, z)=\frac{w_0}{w(z)}\de{E}{M}(0,0)\exp\left(-\frac{\rho^2}{w^2(z)}+ikz+i\frac{\rho^2}{2z}-i\frac{\pi}{2}\right)
+\end{equation}
+(Add calculation and plot)\\

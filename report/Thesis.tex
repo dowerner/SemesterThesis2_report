@@ -5,6 +5,38 @@
 \usepackage{amsmath}
 %\usepackage{graphicx}
 \usepackage{geometry}
+\usepackage{pdfpages}
+%\usepackage{etoolbox}
+\usepackage{tocloft}
+\usepackage{listings} 	% needed for code appendix
+\usepackage{color}		% needed for code appendix
+\definecolor{dkgreen}{rgb}{0,0.6,0}		% needed for code appendix
+\definecolor{gray}{rgb}{0.5,0.5,0.5}	% needed for code appendix
+\definecolor{mauve}{rgb}{0.58,0,0.82}	% needed for code appendix
+ 
+\setlength\cftparskip{-1pt}
+\setlength\cftbeforechapskip{0pt}
+
+% needed for code appendix
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+\newcommand{\blankpage}{\newpage\null\thispagestyle{empty}\newpage}
 
 \newcommand{\um}{\ensuremath{\,\si{\micro m}}}
 \newcommand{\ppm}{\ensuremath{\,\si{ppm}}}
@@ -13,11 +45,14 @@
 \newcommand{\rpm}{\ensuremath{\,\si{rpm}}}
 \newcommand{\mJcm}{\ensuremath{\,\si{mJ/cm^2}}}
 \newcommand{\Wm}{\ensuremath{\,\si{W/m^2}}}
+\newcommand{\cbar}{\ensuremath{\,\si{bar}}}
 
 \newcommand{\av}[1]{\ensuremath{\langle #1\rangle}}
 \newcommand{\vc}[1]{\ensuremath{\mathbf{#1}}}
 \newcommand{\de}[2]{\ensuremath{#1_{\si{#2}}}}
 \newcommand{\field}[2]{\ensuremath{\de{\vc{#1}}{#2}}}
+
+%\pretocmd{\chapter}{\addtocontents{toc}{\protect\addvspace{15\p@}}}{}{}
 
 
 % redeclare math operators
@@ -30,7 +65,11 @@
 \input{Frontpage.tex}
 \frontmatter
 
+\includepdf{Declaration-Originality}
+\blankpage
+
 \input{Abstract}
+\blankpage
 \tableofcontents
 
 \mainmatter
@@ -44,6 +83,7 @@
 
 \backmatter
 \bibliographystyle{rene}
+%\bibliographystyle{ieeetr}
 \bibliography{master_bib}
 
 \input{Aknowledgements}

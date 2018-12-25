@@ -1,0 +1,31 @@
+\subsection{Sensing factor}\label{ChapSensingFactor}
+As we have seen in \autoref{ChapCavityDetection}, the sensitivity of the cavity particle detection depends on the ratio of the cavity mode volume and the particle volume. Since the volume of the nanoparticle is restricted to have a diameter of less than $200\nm$ we need to shrink the cavity itself.
+
+\begin{equation}\label{EqSensingFactor}
+	S\propto\frac{\mathcal{F}}{L}
+\end{equation}
+
+\subsection{Information retrieval rate}\label{ChapInformationRetrievalRate}
+If the mirrors used for the cavity have a near $100\,\%$ reflectivity, then the light that resonates inside of the cavity will only leave the cavity after many round trips. This means that the photon lifetime inside of the cavity is large. The inverse of the cavity lifetime is the cavity linewidth defined as follows [ref].
+
+\begin{equation}
+	\kappa = \frac{\pi c_0}{\mathcal{F}L}
+\end{equation}
+
+A small linewidth means that the quality factor of the resonator is high. In the case of cavities this means that also the \textit{finesse} $\mathcal{F}$ is high. While it is often the case that a high finesse is desirable, in the case of sensing this is a problem. Qualitatively speaking, if the light that is traveling through the cavity and picks up information about the nanoparticle, never leaves the cavity and hits the detector, the information cannot be retrieved. Quantitatively, this means that linewidth $\kappa$ has to be bigger than the oscillation frequency of the particle $\de{\Omega}{mech}$. According to the \textit{Nyquist-Shannon sampling theorem} [ref], the following relation has to hold:
+
+\begin{equation}
+	\kappa > 2\cdot\de{\Omega}{mech}
+\end{equation}
+
+So as an additional figure of merit, we define an information retrieval rate which is directly proportional to the cavity linewidth.
+
+\begin{equation}
+	\de{\gamma}{information}\propto \frac{\pi c_0}{\mathcal{F}L}
+\end{equation}
+
+\subsection{Detection efficiency}
+
+\begin{equation}
+	f=\frac{6\lambda^2}{\pi^3}\frac{\mathcal{F}}{w_0^2}
+\end{equation}

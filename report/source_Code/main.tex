@@ -1,0 +1,134 @@
+\begin{lstlisting}
+"""
+File: main.py
+Authors: Philipp Waelchli, Dominik Werner
+Description: This is the main file of the quantum transport simulation
+"""
+
+from potential_utils import open_potential_tool
+from math_utils import solve_schrodinger
+from current_utils import get_current, get_transmission
+from figure_of_merit_utils import get_asymmetry, get_non_linearity, get_responsivity
+import matplotlib.pyplot as plt
+import numpy as np
+from constants import *
+
+
+dx = 0.2 * length_scale     # the grid spacing of the model
+int_energy = np.linspace(0, 3, 1e3)     # energy range for the current calculation
+device = open_potential_tool()      # get device object from the potential editor tool
+
+do_solve_schrodinger = device.solve_schrodinger   # should Schrodinger equation be solved?
+max_bias = device.max_bias  # maximum bias [V]
+bias_voltage = np.linspace(0, max_bias)   # define bias currents for the simulation
+reverse_bias_voltage = np.linspace(-max_bias, 0)   # define bias currents for the simulation
+I_forward = []  # collection for the resulting forward current
+I_backward = []  # collection for the resulting backward current
+
+do_save_plots = device.enable_plot_save    # should the plots be saved?
+delimiter = '/'
+if '\\' in device.filename:
+    delimiter = '\\'
+
+file_prefix = device.filename.split(delimiter)[-1].replace('.json', '')  # get name of the device as plot prefix
+if file_prefix == '' and do_save_plots:
+    file_prefix = input('Unable to determine plot prefix. Please enter a prefix:')
+file_path = '../plots/'
+
+# get the IV characterisitc for the the forward bias case
+print('Calculating forward current...')
+for bias in bias_voltage:
+    x, potential, mass = device.get_potential(dx, bias)     # get the potential at the given bias
+    I_forward.append(get_current(x, potential, mass, int_energy))   # get the current at the given bias
+
+# get the IV characterisitc for the the reverse bias case
+print('Calculating reverse current...')
+for bias in reverse_bias_voltage:
+    x, potential, mass = device.get_potential(dx, bias)     # get the potential at the given bias
+    I_backward.append(get_current(x, potential, mass, int_energy))   # get the current at the given bias
+
+
+if do_solve_schrodinger:
+    bias = device.max_bias
+    x, potential, mass = device.get_potential(dx, bias)     # get the potential at the given bias
+    print('Solving Schrodinger equation...')
+    states, energies = solve_schrodinger(x, potential, mass)    # solve the schrodinger equation
+print('done.')
+
+T = get_transmission(x, potential, mass, int_energy)
+fig = plt.figure()
+plt.plot(int_energy, T)
+plt.xlabel('Energy (eV)')
+plt.ylabel('Transmission')
+plt.title('Transmission @bias={} V'.format(bias))
+fig.savefig(file_path + 'transmission.png')
+
+fig = plt.figure()
+plt.plot(x, potential)
+plt.xlabel('x [m]')
+plt.ylabel('vacuum level alignment [eV]')
+plt.title('Device Material Regions')
+if do_save_plots: fig.savefig(file_path + file_prefix + '_potential.png')
+
+# plot the IV-Characteristic for the forward bias case
+fig = plt.figure()
+plt.plot(bias_voltage, np.abs(I_forward) * 1e-4)
+plt.title('Forward Current')
+plt.xlabel('Bias [V]')
+plt.ylabel('Current [A/cm^2]')
+if do_save_plots: fig.savefig(file_path + file_prefix + '_IV_forward.png')
+
+# plot the IV-Characteristic for the reverse bias case
+fig = plt.figure()
+plt.plot(reverse_bias_voltage, np.abs(I_backward) * 1e-4)
+plt.title('Reverse Current')
+plt.xlabel('Reverse Bias [V]')
+plt.ylabel('Current [A/cm^2]')
+fig.tight_layout()
+if do_save_plots: fig.savefig(file_path + file_prefix + '_IV_reverse.png', bbox_inches='tight')
+
+# plot the device asymmetry
+fig = plt.figure()
+plt.semilogy(bias_voltage, get_asymmetry(I_forward, I_backward))
+plt.title('Asymmetry')
+plt.xlabel('Voltage [V]')
+plt.ylabel('Asymmetry [1]')
+if do_save_plots: fig.savefig(file_path + file_prefix + '_asymmetry.png')
+
+# plot the device non-linearity
+fig = plt.figure()
+plt.semilogy(bias_voltage, get_non_linearity(bias_voltage, I_forward))
+plt.title('Non-Linearity')
+plt.xlabel('Voltage [V]')
+plt.ylabel('Non-Linearity [1]')
+if do_save_plots: fig.savefig(file_path + file_prefix + '_nonlinearity.png')
+
+# plot the device responsitivty
+fig = plt.figure()
+plt.semilogy(bias_voltage, get_responsivity(bias_voltage, I_forward))
+plt.title('Responsivity')
+plt.xlabel('Voltage [V]')
+plt.ylabel('Responsivity [1/V]')
+if do_save_plots: fig.savefig(file_path + file_prefix + '_responsivity.png')
+
+# plot some solutions of the schrodinger equation
+if do_solve_schrodinger:
+    fig = plt.figure()
+    plt.title('Schrodinger Equation Solutions')
+    plt.xlabel('x [m')
+    plt.ylabel('Energy [eV]')
+    plt.hold = True
+    plt.plot(x, potential)
+
+    legend_arr = ['potential']
+
+    for i in range(device.min_state - 1, device.max_state):
+        plt.plot(x, energies[i] + states[:, i])
+        plt.hlines(energies[i], xmin=min(x), xmax=max(x), colors='k', linestyles='dashed', linewidth=1)
+        legend_arr.append('mode {}'.format(i+1))
+
+    plt.legend(legend_arr)
+    if do_save_plots: fig.savefig(file_path + file_prefix + '_waves.png')
+
+plt.show(block=True)
+\end{lstlisting}

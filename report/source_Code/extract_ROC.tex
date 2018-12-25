@@ -1,0 +1,191 @@
+\begin{lstlisting}
+"""
+File:           extract_ROC.py
+Author:         Dominik Werner, 2018
+Description:    This script opens images taken on the microscope of the fabricated stamps and tries to extract the ROC
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+from skimage import measure
+from scipy.optimize import curve_fit
+from skimage import feature, color
+import os
+
+# import settings
+date = '05.12.2018'
+sample = 'tip4'
+
+show_single_image = False   # if set to true only opens one image and displays the data (else process entire folder)
+summary_file = 'radii.csv'  # file to save ROC data to for further processing
+
+required_surface_diameter = 0.3  # mm, used for identifying ROC extraction contour
+
+scale = 520.0010    # px/mm, metric
+
+
+def find_sample(image):
+    '''
+    Locate the sample with the molten glas droplet in the image.
+    :param image: image
+    :return: contour that is most likely the droplet as well as the center of the contour and its width and height.
+    '''
+    contours = measure.find_contours(image[..., 0], 115)    # search contours
+    radius = 0
+    for c in contours:  # loop through all the contours to find the largest -> most likely to be the droplet
+        dev_h, dev_w = np.std(c, axis=0)    # standard deviation determines the extent of the droplet
+        r = np.sqrt(dev_w**2 + dev_h**2)    # calculate the radius of the found contour
+        if r > radius:  # if the radius is bigger than the largest up to this point select this candidate
+            radius = r
+            contour = c
+            width = dev_w * 2
+            height = dev_h * 2
+    y0, x0 = np.mean(contour, axis=0)
+    return contour, x0, y0, width, height
+
+
+def find_circle(image):
+    '''
+    Use canny edge detection and the ransac algorithm to detect a circle in a given image.
+    :param image: image containing the circle
+    :return: center point coordinates x and y as well as the radius
+    '''
+    edges = feature.canny(color.rgb2gray(image), sigma=2)
+    '''plt.figure()
+    plt.imshow(edges)
+    plt.show()'''
+    points = np.array(np.nonzero(edges)).T
+    model_robust, _ = measure.ransac(points, measure.CircleModel, min_samples=3, residual_threshold=2, max_trials=1000)
+    cy, cx, r = model_robust.params
+    return cx, cy, r
+
+
+def circle(x0, y0, r):
+    '''
+    Outputs a collections of x and y coordinates for plotting a circle.
+    :param x0: center point x coordinate
+    :param y0: center point y coordinate
+    :param r: radius
+    :return: x, y collections
+    '''
+    phi = np.linspace(0, 2*np.pi)
+    x = x0 + r * np.cos(phi)
+    y = y0 + r * np.sin(phi)
+    return x, y
+
+
+def do_sphere_analysis(path):
+    print('opening image...')
+    im = np.array(Image.open(path))     # load selected image
+
+    # find sample in the image (the largest contour that can be found)
+    print('searching for sample in image...')
+    contour, x0, y0, width, height = find_sample(im)
+
+    # define region of interest
+    expansion_factor = 1.5
+
+    x_min = x0 - width / 2 * expansion_factor
+    x_max = x0 + width / 2 * expansion_factor
+    y_min = y0 - height / 2 * expansion_factor
+    y_max = y0 + height / 2 * expansion_factor
+
+    # make sure that the indices for the region of interest are bounded
+    print('determining region of interest...')
+    image_height, image_width, _ = im.shape
+    if x_min < 0: x_min = 0
+    if y_min < 0: y_min = 0
+    if x_max > image_width - 1: x_max = image_width - 1
+    if y_max > image_height - 1: y_max = image_height - 1
+
+    # extract region of interest from image for circle detection
+    image_roi = im[int(y_min):int(y_max), int(x_min):int(x_max)]
+
+    # extract the contour that lies within the region of interest
+    print('extracting contour...')
+    mask = (contour[:, 1] > x_min) & (contour[:, 1] < x_max) & (contour[:, 0] > y_min) & (contour[:, 0] < y_max)
+    contour_x = contour[mask, 1]
+    contour_y = contour[mask, 0]
+
+    # find the angle in which the sample is oriented
+    print('estimating droplet center...')
+    roi_intersection1 = np.asarray([contour_x[0], contour_y[0]])
+    roi_intersection2 = np.asarray([contour_x[-1], contour_y[-1]])
+    diff_vec = roi_intersection2 - roi_intersection1
+    sample_orientation = np.arctan2(diff_vec[1], diff_vec[0]) + np.pi / 2   # +90° because the orientation is perpendicular
+    print('The sample seems to be oriented at an angle of {}°.'.format(round(sample_orientation * 180 / np.pi), 2))
+
+    # rotate (around roi center) the contour such that the maximum of the x part can be used to estimate the center of the droplet
+    contour_x_rotated = np.cos(-sample_orientation) * (contour_x - x0) - np.sin(-sample_orientation) * (contour_y - y0) + x0
+    contour_y_rotated = np.sin(-sample_orientation) * (contour_x - x0) + np.cos(-sample_orientation) * (contour_y - y0) + y0
+
+    # find cap of the droplet for the circle fit -> around 300µm of surface diameter are needed in the end
+    droplet_center_index = np.argmax(contour_x_rotated)     # get contour index of estimated droplet center
+    droplet_center_x = contour_x[droplet_center_index]      # get droplet center x coordinate
+    droplet_center_y = contour_y[droplet_center_index]      # get droplet center y coordinate
+
+    safety_factor = 2     # expand the fitting area or shrink it if necessary
+    diameter = required_surface_diameter * safety_factor    # required surface diameter of the droplet
+    threshold_pixel_count = 4   # additional pixels around the circle fit region of interest to make sure nothing is cut off
+
+    contour_start_index = int(droplet_center_index - diameter / 2 * scale)  # fit contour start index
+    contour_end_index = int(droplet_center_index + diameter / 2 * scale)    # fit contour end index
+    fit_contour_x = contour_x[contour_start_index:contour_end_index]    # x coordinates of the fit contour
+    fit_contour_y = contour_y[contour_start_index:contour_end_index]    # y coordinates of the fit contour
+    fit_roi_x_min = np.min(fit_contour_x) - threshold_pixel_count
+    fit_roi_x_max = np.max(fit_contour_x) + threshold_pixel_count
+    fit_roi_y_min = np.min(fit_contour_y) - threshold_pixel_count
+    fit_roi_y_max = np.max(fit_contour_y) + threshold_pixel_count
+    roi_fit = im[int(fit_roi_y_min):int(fit_roi_y_max), int(fit_roi_x_min):int(fit_roi_x_max)]  # roi for the circle fit
+
+    #plt.figure()
+    #plt.imshow(roi_fit)
+
+    # run circle detection on region of interest (is faster and more accurate than on original image)
+    print('fitting circle...')
+    cx, cy, radius = find_circle(roi_fit)
+    cx += int(fit_roi_x_min)    # translate x coordinate of center point to original image
+    cy += int(fit_roi_y_min)    # translate x coordinate of center point to original image
+    circle_x, circle_y = circle(cx, cy, radius)   # get coordinates of circle for plotting
+
+
+    fig = plt.figure()    # create figure
+    plt.tight_layout()
+    plt.title('radius={} mm'.format(round(radius / scale, 2)))
+    ax1 = plt.subplot(1, 1, 1)
+    ax1.set_xlim([0, image_width / scale])  # set scaling for x axis -> use mm
+    ax1.set_ylim([0, image_height / scale])   # set scaling for y axis -> use mm
+    ax1.set_xlabel('x [mm]')
+    ax1.set_ylabel('y [mm]')
+    ax2 = ax1.twinx().twiny()  # instantiate a second axes
+    ax2.imshow(im)  # display image
+
+    # draw the region of interest
+    ax2.add_patch(plt.Rectangle((x_min, y_min), width*expansion_factor, height*expansion_factor, fill=False, edgecolor='g'))
+
+    ax2.plot(contour_x, contour_y, color='r')   # draw detected contour
+    #ax2.plot(contour_x_rotated, contour_y_rotated, color='b')   # draw detected contour (rotated)
+    ax2.plot(circle_x, circle_y)    # draw detected circle
+    ax2.plot([droplet_center_x], [droplet_center_y], marker='o')    # draw estimated center of droplet
+    ax2.plot(fit_contour_x, fit_contour_y, color='y')
+
+    return fig, radius / scale * 1e3     # return radius in µm
+
+
+if show_single_image:
+    do_sphere_analysis('Samples/{}/{}.TIF'.format(date, sample))
+    plt.show()
+else:
+    csv = open('Samples/{}/Results/{}'.format(date, summary_file), 'w+')
+    csv.write('Sample;Radius [µm]\n')
+
+    for file in os.listdir('Samples/{}'.format(date)):
+        if not os.path.isdir('Samples/{}/{}'.format(date, file)):
+            print('Analyzing image: {} ...'.format(file))
+            fig, r_um = do_sphere_analysis('Samples/{}/{}'.format(date, file))
+            fig.savefig('Samples/{}/Results/{}.png'.format(date, file))
+            csv.write('{};{}\n'.format(file.lower().replace('.tif', '').replace('.png', ''), r_um))
+
+    csv.close()
+\end{lstlisting}

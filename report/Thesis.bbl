@@ -1,0 +1,114 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\selectlanguage}[1]{\relax}
+\input{babelbst.tex}
+\newcommand{\Capitalize}[1]{\uppercase{#1}}
+\newcommand{\capitalize}[1]{\expandafter\Capitalize#1}
+
+\bibitem{gieseler2013thermal}
+J.~Gieseler, L.~Novotny, \bbland{} R.~Quidant, \emph{Thermal nonlinearities in
+  a nanomechanical oscillator}, Nature physics \textbf{9}, 806 (2013)
+
+\bibitem{chaste2012nanomechanical}
+J.~Chaste, A.~Eichler, J.~Moser, G.~Ceballos, R.~Rurali, \bbland{} A.~Bachtold,
+  \emph{A nanomechanical mass sensor with yoctogram resolution}, Nature
+  nanotechnology \textbf{7}, 301 (2012)
+
+\bibitem{yang2006zeptogram}
+Y.-T. Yang, C.~Callegari, X.~Feng, K.~L. Ekinci, \bbland{} M.~L. Roukes,
+  \emph{Zeptogram-scale nanomechanical mass sensing}, Nano letters \textbf{6},
+  583 (2006)
+
+\bibitem{cleland1998nanometre}
+A.~N. Cleland \bbland{} M.~L. Roukes, \emph{A nanometre-scale mechanical
+  electrometer}, Nature \textbf{392}, 160 (1998)
+
+\bibitem{rugar2004single}
+D.~Rugar, R.~Budakian, H.~Mamin, \bbland{} B.~Chui, \emph{Single spin detection
+  by magnetic resonance force microscopy}, Nature \textbf{430}, 329 (2004)
+
+\bibitem{stipe2001noncontact}
+B.~Stipe, H.~Mamin, T.~Stowe, T.~Kenny, \bbland{} D.~Rugar, \emph{Noncontact
+  friction and force fluctuations between closely spaced bodies}, Physical
+  review letters \textbf{87}, 096801 (2001)
+
+\bibitem{moser2013ultrasensitive}
+J.~Moser, J.~G{\"u}ttinger, A.~Eichler, M.~J. Esplandiu, D.~Liu, M.~Dykman,
+  \bbland{} A.~Bachtold, \emph{Ultrasensitive force detection with a nanotube
+  mechanical resonator}, Nature nanotechnology \textbf{8}, 493 (2013)
+
+\bibitem{arndt2014testing}
+M.~Arndt \bbland{} K.~Hornberger, \emph{Testing the limits of quantum
+  mechanical superpositions}, Nature Physics \textbf{10}, 271 (2014)
+
+\bibitem{aspelmeyer2012quantum}
+M.~Aspelmeyer, P.~Meystre, \bbland{} K.~Schwab, \emph{Quantum optomechanics},
+  Physics Today \textbf{65}, 29 (2012)
+
+\bibitem{aspelmeyer2014cavity}
+M.~Aspelmeyer, T.~J. Kippenberg, \bbland{} F.~Marquardt, \emph{Cavity
+  optomechanics}, Reviews of Modern Physics \textbf{86}, 1391 (2014)
+
+\bibitem{ekinci2004ultimate}
+K.~Ekinci, Y.~Yang, \bbland{} M.~Roukes, \emph{Ultimate limits to inertial mass
+  sensing based upon nanoelectromechanical systems}, Journal of applied physics
+  \textbf{95}, 2682 (2004)
+
+\bibitem{postma2005dynamic}
+H.~C. Postma, I.~Kozinsky, A.~Husain, \bbland{} M.~Roukes, \emph{Dynamic range
+  of nanotube-and nanowire-based electromechanical systems}, Applied Physics
+  Letters \textbf{86}, 223105 (2005)
+
+\bibitem{tanjiinteraction}
+H.~Tanji-Suzuki, I.~D. Leroux, M.~H. Schleier-Smith, M.~Cetina, A.~T. Grier,
+  J.~Simon, \bbland{} V.~Vuletic, \emph{Interaction between atomic ensembles
+  and optical resonators: Classical}
+
+\bibitem{chang2010cavity}
+D.~E. Chang, C.~Regal, S.~Papp, D.~Wilson, J.~Ye, O.~Painter, H.~J. Kimble,
+  \bbland{} P.~Zoller, \emph{Cavity opto-mechanics using an optically levitated
+  nanosphere}, Proceedings of the National Academy of Sciences \textbf{107},
+  1005 (2010)
+
+\bibitem{novotny2012principles}
+L.~Novotny \bbland{} B.~Hecht, \emph{Principles of nano-optics}, Cambridge
+  university press (2012)
+
+\bibitem{hebestreit2017thermal}
+E.~Hebestreit, \emph{Thermal properties of levitated nanoparticles},
+  \bblphdthesis{}, ETH Zurich (2017)
+
+\bibitem{siegman1986lasers}
+A.~Siegman, \emph{Lasers}, University Science Books (1986)
+
+\bibitem{shannon1949communication}
+C.~E. Shannon, \emph{Communication in the presence of noise}, Proceedings of
+  the IRE \textbf{37}, 10 (1949)
+
+\bibitem{dowling1991radiation}
+J.~P. Dowling, M.~O. Scully, \bbland{} F.~DeMartini, \emph{Radiation pattern of
+  a classical dipole in a cavity}, Optics communications \textbf{82}, 415
+  (1991)
+
+\bibitem{roy2011fabrication}
+A.~Roy \bbland{} M.~D. Barrett, \emph{Fabrication of glass micro-cavities for
+  cavity quantum electrodynamics experiments}, Applied Physics Letters
+  \textbf{99}, 171112 (2011)
+
+\bibitem{hasegawa2018fabrication}
+K.~Hasegawa, S.~Kato, T.~Okazaki, H.~Murotani, \bbland{} K.~Saito,
+  \emph{Fabrication of a laser cavity mirror in a large mode area fiber by an
+  ultrashort pulse laser}, Applied optics \textbf{57}, 7314 (2018)
+
+\bibitem{park2004anti}
+S.~Park, H.~Schift, C.~Padeste, B.~Schnyder, R.~K{\"o}tz, \bbland{}
+  J.~Gobrecht, \emph{Anti-adhesive layers on nickel stamps for nanoimprint
+  lithography}, Microelectronic Engineering \textbf{73}, 196 (2004)
+
+\bibitem{ormocompProcess}
+Microresist, \emph{Ormocomp specifications},
+  https://www.microresist.de/sites/default/files/download/PI\_OrmoComp\_OrmoClearFX\_2015\_0.pdf,
+  [Online; accessed 25.12.2018]
+
+\end{thebibliography}

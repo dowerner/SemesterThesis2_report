@@ -1,0 +1,84 @@
+\begin{lstlisting}
+"""
+File:           extract_mirror_dimensions.py
+Author:         Dominik Werner, 2018
+Description:    This script opens calculates the mirror dimensions from measured radii of fabricated stamps
+"""
+
+import numpy as np
+
+# input and output files
+input_file_path = 'Samples/05.12.2018/Results/radii.csv'
+result_file_path = 'Samples/05.12.2018/Results/calculated_mirrors.csv'
+
+# Definitions
+desired_cavity_length = 500e-6  # 0.5 mm
+cover_slip_thickness = 160e-6  # https://de.vwr.com/store/product/3006241/deckglaeser-menzel-glaeser
+ormocomp_layer_thickness = 25e-6  # rough estimate
+diameter_factor = 5
+
+pi = np.pi
+wl = 1565e-9    # wavelength
+
+focus_waist_from_r_L = lambda R, L: np.sqrt(wl/pi)*(L*(R-L))**(1/4)
+
+
+def extract_mirror(ROC, name):
+    '''
+    Extract mirror dimensions from a given ROC
+    :param ROC: radius of curvature in m
+    :param name: name of the sample
+    :return: beam waist at the focus point, beam waist radius at mirror position,
+    Gaussian beam diameter on mirror, mirror diameter, mirror depth
+    '''
+    w0 = focus_waist_from_r_L(ROC, desired_cavity_length)  # beam waist at focus
+    k = 2*pi/wl     # wave vector
+    zR = pi*w0**2/wl    # Rayleigh range
+    n = 1   # refractive index
+    th = wl/(pi*n*w0)   # divergence angle
+    psi = lambda z: np.arctan(np.divide(z, zR))    # Gouy phase
+    R = lambda z: z*(1 + np.power(np.divide(zR, z), 2))     # wave front radius
+    z_from_R = lambda R: (R+np.sqrt(R**2-4*zR**2))/2
+    w = lambda z: w0*np.sqrt(1 + np.power(np.divide(z, zR), 2))     # beam width
+
+    r1 = ROC  # 1mm
+    z1 = z_from_R(r1)
+    D = w(z1 + ormocomp_layer_thickness + cover_slip_thickness) * diameter_factor
+    D0 = 2*r1*np.arctan(w(desired_cavity_length)/r1)  # Mirror diameter hit by gaussian beam
+    h1 = r1 - np.sqrt(r1**2 - D**2/4)  # height of desired mirror
+
+    print('Mirror:', name)
+    print('Wavefront Radius: R1 =', r1*1e6, 'µm')
+    print('Desired hemispherical cavity length: L =', desired_cavity_length*1e6, 'µm')
+    print('Required focal radius: w0 =', w0*1e6, 'µm')
+    print('Mirror-Center Distance: d1 =', z1*1e6, 'µm')
+    print('Mirror diameter hit by gaussian beam: D0 =', D0*1e6, 'µm')
+    print('Desired mirror diameter (opening circle): D =', D*1e6, 'µm')
+    print('Height/Depth of desired mirror: h1 =', h1*1e6, 'µm')
+    print('Focus width (diameter): w0 =', 2*w0*1e6, 'µm')
+    print('Cavity length (hemispherical): L = ', z1*1e6, 'µm')
+    print('***************************************************************************************')
+
+    return w0, z1, D0, D, h1
+
+
+input_file = open(input_file_path, 'r')
+result_file = open(result_file_path, 'w+')
+
+result_file.write('Sample;Radius [µm];Cavity Length [µm];Required w0 [µm];'
+                  'Beam Diameter on mirror [µm];Mirror Diameter [µm];Mirror Depth [µm]\n')
+
+lines = input_file.readlines()  # read lines with the radii of the measured stamps
+for i in range(1, len(lines)):   # skip first line
+    line = lines[i]
+    cells = line.split(';')
+    if len(cells) == 2:
+        name = cells[0]
+        R = float(cells[1])*1e-6
+        w0, L, D0, D, h1 = extract_mirror(R, name)
+        result_file.write('{};{};{};{};{};{};{}\n'.format(name, R*1e6, L*1e6, w0*1e6, D0*1e6, D*1e6, h1*1e6))
+
+result_file.close()
+input_file.close()
+\end{lstlisting}
+
