@@ -38,14 +38,14 @@ As stated at the beginning, we need to make $D$ as large as possible while keepi
 \begin{equation}\label{EqReqBeam}
 	2\cdot z_{\si{T}}(x=D/2)=z_{\si{m}}(D)
 \end{equation}
-Note that we put a factor two in front of the trapping beam radius because we require double of the beams minimum space requirement (see \autoref{fig:FigBeamWidth}). If we plug \autoref{EqMirrorDistance} and \autoref{EqTrapRadius} into \autoref{EqReqBeam} we get a quadratic equation which can be solved for $D$.
+Note that we put a factor two in front of the trapping beam radius because we require double of the beams minimum space requirement (see \autoref{Fig:FigBeamWidth}). If we plug \autoref{EqMirrorDistance} and \autoref{EqTrapRadius} into \autoref{EqReqBeam} we get a quadratic equation which can be solved for $D$.
 \begin{equation}
 	D=\frac{-\delta\tan\alpha+\sqrt{\delta^2\tan^2\alpha -\left[\tan^2\alpha-\left(\frac{z_{\si{R}}}{\rho w_0}\right)^2\right]\left[\delta^2+z_{\si{R}}^2\right]}}{\tan^2\alpha-\left(\frac{z_{\si{R}}}{\rho w_0}\right)^2}
 \end{equation}
 Now we can estimate the cavity length $L=2\cdot z_{\si{m}}(D)+\delta$. To get actual numbers we have to fix the beam waist $w_0$ of the cavity mode at the focus. The estimated value for $w_0$ can range from $2\um$ to about $40\um$. In reality the focus width will be determined by the cavity dimensions themselves. To stay within the defined range of $w_0$ a cavity which has a length of $L\approx 500\um$ with mirrors of diameter $D\approx 200\um$ is a very robust choice.
 
 \subsection{Radius of curvature}
-For a Gaussian mode to resonate inside the cavity the ROC (radius of curvature) of the beam has to match the curvature of the cavity mirror. Since we are using a half-symmetrical cavity, primarily for alignment reasons (see \autoref{ChapCavityStability}), we have one mirror without curvature and one mirror which is spherical. The wavefront radius of the beam depends on the cavity length $L$.
+For a Gaussian mode to resonate inside the cavity the ROC (radius of curvature) of the beam has to match the curvature of the cavity mirror. Since we are using a half-symmetrical cavity, primarily for alignment reasons (see \autoref{ChapCavityStability}), we have one mirror without curvature and one mirror which is spherical. The ROC of the beam depends on the cavity length $L$.
 \begin{equation}\label{EqWfRadius}
 	R(L)=L\left[1+\left(\frac{z_{\si{R}}}{L}\right)^2\right]
 \end{equation}
@@ -69,9 +69,9 @@ The surface roughness of the cavity mirrors is of crucial importance while plann
 \end{equation}
 The finesse which defines what portion of the light remains inside of the cavity after one round trip is defined as \cite{roy2011fabrication}:
 \begin{equation}
-	\mathcal{F}=\frac{2\pi}{L_{\si{sc}}}
+	\mathcal{F}=\frac{2\pi}{2(L_{\si{sc}}+T+A)}
 \end{equation}
-It can be seen that the finesse degrades substantially with an increasing surface roughness.
+Where $T$ is the transmission through the mirrors and $A$ the absorption. It can be seen that the finesse degrades substantially with an increasing surface roughness.
 \begin{figure}[H]
 	\includesvg[scale=0.7]{source/finesse_rms}
 	\caption{It can be seen how the finesse of the cavity degrades as a function of the surface roughness (RMS). From a roughness of $0.5\si{nm}$ to $1.5\si{nm}$ the finesse has already degraded by one order of magnitude.}
@@ -79,121 +79,123 @@ It can be seen that the finesse degrades substantially with an increasing surfac
 As explained in \autoref{ChapInformationRetrievalRate}, the linewidth of the cavity has to be large enough such that the particle motion can be followed without much delay. This means the finesse cannot be too high. However, the lowering of the finesse has to take place through the light leaving the cavity through one of the mirrors and not through scattering losses due to rough mirror surfaces, since this light will not hit the detector. For this reason the aim is to fabricate mirrors with a roughness below $0.6\nm$ which corresponds to scattering losses of less than $23.4\ppm$.
 
 \section{Evaluated methods}
-We now know what requirements the cavity mirrors have to meet. Here we will briefly discuss different methods that were evaluated if they can be used for the fabrication process. In the end we settled on glass fibers being melted and used as a stamp for imprinting the mirrors into a polymer. At the start we investigated if the imprinting can be omitted entirely.\\
-A company called Swisslitho uses a technology called NanoFrazor where they let a very small cantilever remove parts of the substrate to obtain structures with details on the nano-scale. While promising it turned out that our micromirrors are too large for this fabrication method. For this reason the imprinting step had to be included in the fabrication process.\\
-Another alternative was to order smooth glass beads and do the imprinting with them. After contacting a company named CoSpheric it turned out that they do not have glass beads required with a specified surface roughness. This meant that we were not able omit the fabrication of our own stamps.\\
-The attempts made with different stamps than glass resulted in mirrors with an insufficiently smooth surface. In the end, the only stamps smooth enough were the once that we fabricated using the melting method which will be described in the coming sections.
+We now know what requirements the cavity mirrors have to meet. Here we will briefly discuss different methods that were evaluated for being used for the fabrication process. In the end we settled on glass fibers being melted and used as a stamp for imprinting the mirrors into a polymer. At the start we investigated if the imprinting can be omitted entirely.\\
+A company called Swisslitho uses a technology called NanoFrazor where they let a nano-scaled cantilever remove parts of the substrate to obtain structures with details on the nano-scale. While promising it turned out that our micromirrors are too large for this fabrication method. For this reason the imprinting step had to be included in the fabrication process.\\
+Another alternative was to order smooth glass beads and do the imprinting with them. After contacting a company named CoSpheric it turned out that they do not have the glass beads required with a specified surface roughness. This meant that we were not able omit the fabrication of our own stamps.\\
+The attempts made with different stamps than glass resulted in mirrors with an insufficiently smooth surface. In the end, the only stamps smooth enough were the once that we fabricated using the melting method which will be described in \autoref{ChapStampFabrication}.
 \newpage
 
 
 \section{Process}
-In the following section the fabrication process that was put together, based on extensive research with different fabrication approaches, will be described in detail.\\
-The most important part of the successful creation of microcavities is the fabrication of the spherical mirrors which meet all the aforementioned specifications. \autoref{Fig:fabrication_flowchart} shows schematically in what order the different steps of the fabrication process are arranged.
+In the following section our fabrication process, which is based based on extensive research on different fabrication approaches, will be described in detail.\\
+It is curcial that the microcavities meet all the aforementioned specifications. \autoref{Fig:fabrication_flowchart} shows schematically in what order the different steps of the fabrication process are arranged.
 \begin{figure}[H]
 	\includesvg[scale=0.3]{source/fabrication_flowchart}
 	\caption{This flowchart shows schematically in which order the various fabrication steps are arranged.}
 	\label{Fig:fabrication_flowchart}
 \end{figure}
-In the end the process should yield a transparent mold of the mirror. In order for the mirror to fulfill its purpose it has to be coated with a reflective layer. This step is done by \textit{ECI} (Evaporated Coatings Inc), a company that specializes in coating sensitive structures on different scales.
+In the end the process should yield a mirror which is ready for coating. This step is done by \textit{ECI} (Evaporated Coatings Inc), a company that specializes in coating sensitive structures.
+
 \subsection{Cleaning}
-The complete fabrication process takes quite some time to be completed. All steps combined up to the point where the mirror shape can be measured to determine its surface roughness, takes about twenty hours. To protect the mirrors from being contaminated while being fabricated, all fixtures and tools have to be clean. They are cleaned by putting them into a bath of acetone and then ultrasonicate them for roughly twenty minutes. After that the step is repeated with isopropanol instead of acetone. Drying the components in an oven finalizes this step.
+All steps combined up to the point where the mirror shape can be measured to determine its surface roughness, take about twenty hours. To protect the mirrors from being contaminated while being fabricated, all fixtures and tools have to be clean. They are cleaned by putting them into a bath of acetone and then ultrasonicate them for roughly twenty minutes. After that the step is repeated with isopropanol instead of acetone. Drying the components in an oven at $200\degrees$ for ten minutes finalizes this step.
+
 \subsection{Stamp fabrication}\label{ChapStampFabrication}
-The fabrication of the stamps is one key step in the fabrication process. Fabricating the stamps reliably is crucial to making the process stable. Various methods for creating stamps made from Siliciumdioxide exist. Some use pulsed lasers to melt them \cite{hasegawa2018fabrication}. Others use a re-flow method create smooth, spherical mirrors \cite{roy2011fabrication}. Our method uses a small blowtorch which can be bought regularly and a specially made machine which spins the glass medium while it is being melted. With the spinning it is ensured that the drop that the glass forms is spherical and symmetric.\\
-The material we use for this procedure are glass cylinders extracted from a standard multimode communication fiber of one millimeter thickness. To do this we use a special tool to remove the cladding. After that, we ultrasonicate the fiber piece in acetone to remove the buffer layer. Now the tiny glass cylinder can be melted.
+Fabricating the stamps reliably is one crucial part to making the mirrors. Various methods for creating stamps made from SiO2 exist. Some use pulsed lasers to melt them \cite{hasegawa2018fabrication}. Others use a re-flow method to create smooth, spherical mirrors \cite{roy2011fabrication}. Our method uses a small blowtorch which can be bought regularly and a specially made machine which spins a glass cylinder while being melted. The glass cylinder is extracted from a multimode communication glass fiber with one millimeter thickness. To do this we use a special tool to remove the cladding. After that, we ultrasonicate the fiber piece in acetone to remove the buffer layer. Now the glass cylinder, which is at this point about $15\mm$ long, can be melted. With the spinning it is ensured that the drop that the glass forms is spherical and symmetric.
+
 \begin{figure}[H]
-	\includegraphics[scale=0.2]{source/melting_machine}
+	\includegraphics[scale=0.4]{source/melting_machine_compressed}
 	\caption{A picture of the machine used for melting the glass rods. The framing is made from a construction kit from Makeblock. Some parts of the framing are custom made parts made from aluminum. The motor is from Maxxon (870 rpm, $41 \si{Nmm}$).}
 	\label{Fig:Melting_machine}
 \end{figure}
-Without the spinning at approximately $11.4\si{Hz}$ (would be around $14.5\si{Hz}$ without the straightening fixture around the axles) the drop would not form a sphere in a controlled manner. \autoref{Fig:Melting_nonrotating} shows schematically how the formation without the spinning motion would look like.
+Without the spinning at approximately $11.4\si{Hz}$ the drop would not form a sphere in a controlled manner. \autoref{Fig:Melting_nonrotating} shows schematically how the formation without the spinning motion would look like.
 \begin{figure}[H]
 	\includesvg[scale=0.3]{source/melting_nonrotating}
-	\caption{Schematic depiction of a drop melted without the rotating motion during the process.}
+	\caption{Schematic depiction of a drop melted without the rotating motion as a function of time.}
 	\label{Fig:Melting_nonrotating}
 \end{figure}
-With the machine shown in \autoref{Fig:Melting_machine} this problem can be omitted and the radius of the drop can be controlled by varying the speed of the machine and also by holding the blowtorch at different heights.
+With the machine shown in \autoref{Fig:Melting_machine} this problem can be omitted and the radius of the drop can be controlled by varying the speed of the machine and also by melting the glass cylinder at different heights.
 \begin{figure}[H]
 	\includesvg[scale=0.3]{source/melting_rotating}
 	\caption{Schematic depiction of the melting process with rotating axis.}
 \end{figure}
-For the actual melting we used two different process gases: Acetylene at a pressure of $0.4\cbar$ and oxygen at a pressure of $0.2\cbar$. To prevent soot from contaminating the stamp it is important to add oxygen to the acetylene flame. If the yellow in the flame disappears and a blue glow is emitted from the center of the flame the blowtorch is set up properly. The melting then simply takes place by holding the flame of the blowtorch up to the rotating glass cylinder at approximately four millimetres above the lower end and waiting for the glass to melt and expand into a sphere. The blowtorch can then be turned off and in a short amount of time the glass cools down and forms a transparent sphere at the lower end of the cylinder.
+For the actual melting we use two different process gases for the blowtorch: Acetylene at a pressure of $0.4\cbar$ and oxygen at a pressure of $0.2\cbar$. To prevent soot from contaminating the stamp it is important to add oxygen to the acetylene flame. If the yellow in the flame disappears and a blue glow is emitted from the center of the flame the blowtorch is set up properly. The melting then simply takes place by holding the flame of the blowtorch up to the rotating glass cylinder at approximately four millimetres above the lower end and waiting for the glass to melt and expand into a sphere. The blowtorch can then be turned off and the glass cools down and forms a transparent sphere at the lower end of the cylinder.
 \begin{figure}[H]
-	\includegraphics[scale=0.13]{source/melting}
+	\includegraphics[scale=0.5]{source/melting_compressed}
 	\caption{In this picture it can be seen how the rotating glass rod forms a drop which is spherical at the bottom. After cooling the surface is smooth (see \autoref{ChapMatProp}) and the stamp can be processed further.}
 \end{figure}
 
 \subsection{Measurement}\label{ChapMeasurement}
-After the stamps have been fabricated their respective radii of curvature have to be determined. The most frontal part of the glass stamp will imprint the spherical mirror shape into a polymer. This means that the radius of the front part of the stamp has to be known. For this purpose the stamps are fixed inside a quartz-dish and photographed with a microscope. From this image a software developed in python (see Appendix) can determine the radius of the spherical region that will be used as the actual stamp.
+After the stamps have been fabricated their respective radii of curvature have to be determined. The frontal part of the glass stamp will imprint the spherical mirror shape into a polymer. This means that the radius of the front part of the stamp has to be known. For this purpose the stamps are fixed inside a quartz-dish and photographed with a microscope. From this image a software developed in python (see Appendix) can determine the radius of the spherical region that will be used as the actual stamp.
 
 \begin{figure}[H]
 	\includegraphics[scale=0.6]{source/radius_analysis}
 	\caption{The software that is used for extracting the radius is developed in python. It is able to determine the orientation of a sample and uses this to predict which part of the stamp will be in contact with the polymer (marked yellow). The contact region is then used to extract the radius at this position with the Ransac (Random sample consensus) algorithm.}
 \end{figure}
-From the radius we can then infer the dimensions of the actual mirror. First we need the beam waist radius in the focus so we can calculate the Rayleigh length. The ROC is now fixed since the stamp is already fabricated and the cavity length we choose to be $500\si{\micro m}$ as discussed in \autoref{ChapCavityLength}. The following formula for the beam waist radius in the focus can be found by plugging \autoref{EqRayleighRange} into \autoref{EqWfRadius}:
+From the radius we can then infer the dimensions of the actual mirror. For this reason we need to find formulas for all required parameters (beam waist $w_0$, mirror depth $h$ and beam diameter $\de{d}{beam}$). First we need the beam waist of the Gaussian beam so we can calculate the Rayleigh length. The radius of curvature is now fixed since the stamp is already fabricated and the cavity length we choose to be $500\um$ as discussed in \autoref{ChapCavityLength}. The following formula for the beam waist radius in the focus can be found by plugging \autoref{EqRayleighRange} into \autoref{EqWfRadius}:
 \begin{equation}
 	w_0(R, L)=\sqrt{\frac{\lambda}{\pi}}\left(L(R-L)\right)^{1/4}
 \end{equation}
-We know from our discussion regarding the the cavity length that the mirror diameter $D$ will be around $200\um$. From this we can calculate the mirrors depth with simple, geometrical considerations:
+We know from our discussion regarding the the cavity length that the mirror diameter $D$ will be around $200\um$. From this we can calculate the mirrors depth $h$ using geometrical considerations:
 \begin{equation}\label{EqH}
 	h=R-\sqrt{R^2-\left(\frac{D}{2}\right)^2}
 \end{equation}
-The diameter of the mirrors surface that will actually be hit by the light can be calculated as follows:
+The diameter of the spherical mirrors surface that will be covered by a significant portion of the Gaussian beam (i.e. where the intensity drops off with less than $e^{-2}$) can be calculated as follows:
 \begin{equation}
 	d_{\si{Beam}}=2R\cdot \arctan\left(\frac{w(L)}{R}\right)
 \end{equation}
 Where $L$ is the cavity length.
 \begin{figure}[H]
-	\includesvg[scale=0.8]{source/mirror}
-	\caption{This sketch shows the different mirror quantities which can be estimated after the radius of the stamp is known.}
+	\includesvg[scale=1]{source/mirror}
+	\caption{This sketch shows the different mirror quantities which can be estimated after the radius of the stamp is known. In \textit{red} the beam diameter can be seen , this diameter has the same curvature as the mirror.}
 \end{figure}
 The results of the measurements can be found in \autoref{table:CalcMirrorData}.
 
 \subsection{Silanization}
-As imprinting medium we use a polymer called OrmoComp (made by the German company Microresist). This polymer is made for imprinting structures containing a lot of small details. To make the polymer solid it is cured with UV-light after imprinting. To improve the quality of the results it is important to use an anti-adhesive agent which prohibits the polymer from sticking to the stamp after it has been hardened. Anti-adhesive agents are chemical compounds which belong to the silane group, hence the term \textit{silanization}. For our silanization we used a silane called \textit{1H,1H,2H,2H-perfluorooctyl-trichlorosilane} (usually shortened to \textit{F13-TCS}).
+As imprinting medium we use a polymer called OrmoComp (made by the German company Microresist). This polymer is made for imprinting structures containing nano-scaled details. Initially, the polymer is liquid. To make the polymer solid it is cured with UV-light after imprinting. To improve the quality of the results it is important to use an anti-adhesive agent which prohibits the polymer from sticking to the stamp after it has been hardened. Anti-adhesive agents are chemical compounds which belong to the silane group, hence the term \textit{silanization}. For our silanization we used a silane called \textit{1H,1H,2H,2H-perfluorooctyl-trichlorosilane} (usually shortened to \textit{F13-TCS}).
 \begin{figure}[H]
-	\includegraphics[scale=0.1]{source/stamps_taped}
-	\includegraphics[scale=0.14]{source/silanization}
+	\includegraphics[scale=0.4]{source/stamps_taped_compressed}
+	\includegraphics[scale=0.4]{source/silanization_compressed}
 	\caption{Left: Stamps fixed at the bottom of the quartz dish. Right: Setup used for silanization.}
 	\label{Fig:silanization}
 \end{figure}
-Since F13-TCS reacts strongly with water it is important that the moisture in the environment it kept at a minimum during the silanization process. To achieve this, we tape our stamps to the bottom of a quartz dish, put them onto a hot plate and flush them with a weak but steady stream of nitrogen (see \autoref{Fig:silanization}). The entire process takes place under a flow hood. This procedure continues for thirty minutes while the quartz dish is heated to $50\degrees$.\\
-After thirty minutes, the nitrogen flow is removed and a small amount ($0.5-1.0\ul$) of the F13-TCS is put next to the stamps without touching them. At $50\degrees$ the silane will evaporate and ideally its molecules will bind to the surfaces of the stamps and build up an anit-adhesive monolayer.\\
-After an additional thirty minutes the hotplate is turned off. The quartz dish, remains closed and under the flow hood until it reaches room temperature.\\
-There are process manuals which include a plasma treatment of the stamps upfront \cite{park2004anti}. In our process we have omitted this step since the stamps have been melted less than an hour prior to the silanization. The OH-groups that are exposed by the plasma treatment should also be present after melting. Tests that 
-we conducted also confirmed that proper silanization can be achieved without prior plasma treatment of the stamps.
+Since F13-TCS reacts strongly with water it is important that the moisture in the environment it kept at a minimum during the silanization process. To achieve this, we tape our stamps to the bottom of a quartz dish, put them onto a hot plate and flush them with a weak but steady stream of nitrogen (see \autoref{Fig:silanization}). The entire process takes place under a fume hood. This procedure continues for thirty minutes while the quartz dish is heated to $50\degrees$.\\
+After thirty minutes, the nitrogen flow is removed and a small amount ($0.5-1.0\ul$) of the F13-TCS is put next to the stamps by using a pipette without touching them. At $50\degrees$ the silane will evaporate and ideally its molecules will bind to the surfaces of the stamps and build up an anit-adhesive monolayer.\\
+After an additional thirty minutes the hotplate is turned off. The quartz dish, remains closed and under the fume hood until it reaches room temperature.\\
+There are process manuals which include a plasma treatment of the stamps upfront \cite{park2004anti}. Tests that 
+we conducted confirmed that proper silanization can be achieved without prior plasma treatment of the stamps. Since the stamps have been melted less than an hour prior to the silanization, the OH-groups that would be exposed by the plasma are already present.
 
 \subsection{Coverslip preparation}\label{ChapCoverslipPreparation}
 The polymer which was described in the last section is located on a glass coverslip which serves as a base for the mirror. To add the polymer layer to the coverslip we follow a specific procedure.\\
-First, we get the pre-cleaned coverslip from a beaker where it was stored in DI (de-ionized) water. The coverslip is then dried and put into a plasma chamber. To enhance the adhesion of the polymer to the glass a treatment with oxygen plasma is applied over a duration of approximately two minutes. The next step is to use a spin-coating machine to create an even layer of the polymer. This process takes place in a yellow room since the polymerization of the OrmoComp polymer which we are using, starts very quickly when exposed to light with UV-components. The spin-coating takes thirty seconds and takes place at a rotational speed of $3000\rpm$. The coated coverslip is then put onto a hotplate at $80\degrees$ and left there for two minutes. This concludes the coating and pre-baking, the polymer layer has now a thickness of $20-25\um$ and can be used for imprinting.
+First, we get the pre-cleaned coverslip from a beaker where it was stored in DI (de-ionized) water. The coverslip is then blown dry with nitrogen and put into a plasma chamber. To enhance the adhesion of the polymer to the glass a treatment with oxygen plasma is applied over a duration of approximately two minutes. The next step is to use a spin-coating machine to create an even layer of the polymer. This process takes place in a yellow room since the polymerization of the OrmoComp polymer which we are using, starts very quickly when exposed to light with UV-components. The spin-coating takes thirty seconds and takes place at a rotational speed of $3000\rpm$. The coated coverslip is then put onto a hotplate at $80\degrees$ and left there for two minutes. This concludes the coating and pre-baking, the polymer layer has now a thickness of $20-25\um$ and can be used for imprinting.
 
 \subsection{Mirror imprinting}
-With the stamps silanized, measured and a glass coverslip with a still fluid layer of polymer the next step is to imprint the mirror. From the measured radius of the stamp \autoref{EqH} is used to dictate how deep the mirror is supposed to be. During imprinting the stamp has to be lowered slowly onto the polymer layer until contact and then slowly pressed into the material until the desired depth is achieved. Details about the imprinting mechanism will be discussed in \autoref{ChapMirrorFab}.\\
-Once this is done the polymer has to be cured with UV light. The manufacturer recommends using a light source at $\lambda=365\nm$ and and exposure dose of $500$ to $1500 \mJcm$ [ref]. The UV source (US460 Lightpen) we used has $\lambda = 365\nm \pm 5\nm$ and a power of $30'000\Wm$ \cite{ormocompProcess}. This means that by exposing the mirror for one minute we overexpose it. However, according to the process manual overexposing the polymer doesn't degrade the quality (confirmed by manufacturer).\\
+With the stamps silanized, measured and a glass coverslip with a still fluid layer of polymer the next step is to imprint the mirror. From the measured radius of the stamp \autoref{EqH} is used to dictate how deep the mirror is supposed to be. During imprinting the stamp has to be lowered slowly towards the polymer layer until contact and then slowly pressed into the material until the desired depth is achieved. Details about the imprinting mechanism will be discussed in \autoref{ChapMirrorFab}.\\
+Once this is done the polymer has to be cured with UV light. The manufacturer recommends using a light source at $\lambda=365\nm$ and and exposure dose of $500$ to $1500 \mJcm$ \cite{ormocompProcess}. The UV source (US460 Lightpen) we used has $\lambda = 365\nm \pm 5\nm$ and a power of $30'000\Wm$ \cite{us460ds}. This means that by exposing the mirror for one minute we overexpose it. However, according to the process manual overexposing the polymer doesn't degrade the quality (confirmed by manufacturer).\\
 After curing, the stamp is removed and the coverslip is put onto a hotplate for post backing. This takes place over ten minutes at $130\degrees$.
 
 \subsection{Grinding}\label{ChapGrinding}
 With the post backing procedure done, the mirrors would principally be ready for the measurement of their surface roughness under the atomic force microscope. Critically, all the mirrors during the development of this process turned out to be too wide and too deep for measurement. This also meant that they are ill-dimensioned to be used in a microcavity.
 
 \begin{figure}[H]
-	\includesvg[scale=0.4]{source/grinding_sketch}
+	\includesvg[scale=0.3]{source/grinding_sketch}
 	\caption{Schematic depiction of the grinding process. In the top left sketch the desired mirror is drawn in red.}
 	\label{fig:GrindSketch}
 \end{figure}
 
-To obtain the mirror dimensions necessary we used sandpaper to remove excess material. In \autoref{fig:GrindSketch} the grinding process is depicted. First, a cleaning fluid for optical components (First Contact) is applied over the whole surface. After six hours the fluid has dried and forms a protective layer for the mirror inside of the larger hole. The next step is to gradually remove the excess material with sandpaper. During this procedure the protective layer remains on the mirror and protects it from being damaged. For the first iteration a rougher sandpaper is used ($30\um$). Once the mirror starts to get smaller it is important to check frequently under the microscope how the diameter has changed (see \autoref{fig:GrindingMicroscope}). Switching to a smoother sandpaper ($3\um$) is important at a certain point.
+To obtain the mirror dimensions necessary we used sandpaper to remove excess material. In \autoref{fig:GrindSketch} the grinding process is depicted. First, a cleaning fluid for optical components (First Contact) is applied over the whole surface. After six hours the fluid has dried and forms a protective layer for the mirror inside of the larger hole. The next step is to gradually remove the excess material with sandpaper. During this procedure the protective layer remains on the mirror and protects it from being damaged. For the first iteration a rougher sandpaper is used ($30\um$). Once the mirror diameter starts to get smaller it is important to check frequently under the microscope how the diameter has changed (see \autoref{fig:GrindingMicroscope}). Switching to a smoother sandpaper ($3\um$) is important at a certain point.
 
 \begin{figure}[H]
-	\includegraphics[scale=0.4]{source/grinding/grinding}
+	\includegraphics[scale=0.7]{source/grinding/grinding_compressed}
 	\caption{The microscope images show how the mirror diameter gets smaller during the grinding procedure. The protective layer can be seen over the entire sample in the top left and in the center region in the other images. The sandpaper leaves clearly visible marks wherever it removes material. (Images were digitally enhanced, microscope indicators were removed)}
 	\label{fig:GrindingMicroscope}
 \end{figure}
 Getting the mirrors to a diameter $D=200\um$ is nearly impossible with this method. This coupled with the high risk of destroying the mirror itself makes this the most difficult step of the fabrication process. More problems and possible improvements will be discussed in \autoref{ChapProblems} and \autoref{ChapSolutions}.
 
 \subsection{Cleaning}
-The grinding procedure where the mirrors are dimensioned properly causes a lot of dirt on the mirror and the area around it. Furthermore, the dried optical cleaning liquid which was used as a protection layer is still inside the mirror. To remove the dirt and the protection layer residuals we apply the cleaning liquid again and wait for another six hours. After that, a pincer can be used to carefully peel off the newly dried layer, hopefully removing any dirt and residuals on the mirror. While not as difficult as the grinding procedure, cleaning still bares the risk of ripping the mirror from the rest of the material.
+The grinding procedure where the mirrors are dimensioned properly causes a lot of dirt on the mirror and the area around it. Furthermore, the dried optical cleaning liquid which was used as a protection layer is still on top of the mirror. To remove the dirt and the protection layer residuals we apply the cleaning liquid again and wait for another six hours. After that, a pincer can be used to carefully peel off the newly dried layer, hopefully removing any dirt and residuals on the mirror. While not as difficult as the grinding procedure, cleaning still bares the risk of ripping the OrmoComp mirror from its glass substrate.
 
 \begin{figure}[H]
-	\includegraphics[scale=0.25]{source/cleaning_good_scale}
-	\includegraphics[scale=0.25]{source/cleaning_bad_scale}
+	\includegraphics[scale=1]{source/cleaning_good_scale_compressed}
+	\includegraphics[scale=1]{source/cleaning_bad_scale_compressed}
 	\caption{On the \textit{left} side a successfully cleaned mirror can be seen. Regardless of the success, scratch marks are clearly visible along the border of the mirror. On the \textit{right} side a site of a mirror, ripped out while cleaning can be seen.}
 \end{figure}

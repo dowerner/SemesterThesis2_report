@@ -49,7 +49,7 @@ Since there are still air molecules around the particle we have a damping with d
 With the knowledge about the particles movement a feedback mechanism can be used to counteract it. This means that once the particle moves away from a defined center point, the feedback mechanism tells the setup to readjust. To adjust the setup, the laser intensity is changed. Changing the laser intensity effectively changes the traps stiffness. In \autoref{fig:EomCooling} it can be seen that an electro-optic-modulator is used to change the intensity of the trapping beam. The feedback mechanism in this figure is at this point a "black-box" and will be examined more closely in the next section.
 \begin{figure}[H]
     \includesvg[scale=0.23]{source/img_eom_cooling}
-    \caption{This illustration shows the setup with an arbitrary detection mechanism and a blackbox which controls the piezo-stage the laser is mounted upon. In reality the setup is placed within a vacuum chamber and detection schemes which are based on the trapping beam itself are usually made of multiple photo-diodes to capture the movement in all three spatial directions \cite[p.~43]{hebestreit2017thermal}.}
+    \caption{This illustration shows the setup with an arbitrary detection mechanism and a blackbox which controls the electro-optic-modulator. In reality the setup is placed within a vacuum chamber and detection schemes which are based on the trapping beam itself are usually made of multiple photo-diodes to capture the movement in all three spatial directions \cite[p.~43]{hebestreit2017thermal}.}
     \label{fig:EomCooling}
 \end{figure}
 
@@ -67,7 +67,7 @@ When a glass particle is inserted into the cavity it will change the material co
 \begin{equation}\label{EqFreqShift}
 	\Delta\omega=\frac{3\de{V}{p}}{4\de{V}{c}}\frac{\de{\varepsilon}{p}-1}{\de{\varepsilon}{p}+2}\cos(2kz-2\phi)\de{\omega}{c}=\frac{\pi a^3}{\de{V}{c}}\frac{\de{\varepsilon}{p}-1}{\de{\varepsilon}{p}+2}\cos(2kz-2\phi)\de{\omega}{c}
 \end{equation}
-Where $k$ is the wavevector of the cavity mode, $z$ the position inside the cavity $\phi$ the Gouy phase, $a$ is the radius of the glass particle and $\de{\varepsilon}{p}\approx 3.9$ its relative, dielectric permittivity. The last equality in \autoref{EqFreqShift} comes from the fact that the particle is considered to be spherical.
+Where $k$ is the wavevector of the cavity mode, $z$ the position inside the cavity, $\phi$ the Gouy phase, $a$ is the radius of the glass particle and $\de{\varepsilon}{p}\approx 3.9$ its relative, dielectric permittivity. The last equality in \autoref{EqFreqShift} comes from the fact that the particle is considered to be spherical.
 
 \begin{figure}[H]
 	\includesvg[scale=0.6]{source/cavity_detuning_plot}
@@ -135,7 +135,7 @@ Therefore, as our first figure of merit, we define the \textit{information retri
 \end{equation}
 
 \subsection{Sensing factor}\label{ChapSensingFactor}
-As we have seen in \autoref{ChapCavityDetection}, the sensitivity of the cavity particle detection depends on the ratio of the cavity mode volume and the particle volume. Since the volume of the nanoparticle is restricted to have a diameter of less than $200\nm$ we need to shrink the cavity itself. It is important that the frequency shift $\Delta\omega$ is bigger than the cavity linewidth $\kappa$. Otherwise the particles presence would not perturb the cavity. The \textit{sensing factor} can then be defined as follows:
+As we have seen in \autoref{ChapCavityDetection}, the sensitivity of the cavity particle detection depends on the ratio of the cavity mode volume and the particle volume. Since the particle itself is restricted to having a diameter of less than $200\nm$ we need to shrink the cavity. It is important that the frequency shift $\Delta\omega$ is bigger than the cavity linewidth $\kappa$. Otherwise the particles presence would not perturb the cavity. The \textit{sensing factor} can then be defined as follows:
 
 \begin{equation}\label{EqS}
 	S=\frac{\Delta\omega}{\kappa}
@@ -153,7 +153,7 @@ If we plug this into \autoref{EqFreqShift} and \autoref{EqS} we get:
 \end{equation}
 
 \subsection{Detection efficiency}
-When the light of the trapping beam hits the nanoparticle it will scatter parts of it. This scattered light is forms standing waves inside of the cavity, based on the modes that are available. The \textit{local density of optical states (LDOS)} describes the available modes. In a cavity the LDOS is enhanced by the \textit{Purcell effect}. This means that light will more likely generate modes in the region of the higher LDOS than outside of the cavity. The more light is coupled into the cavity the higher the \textit{detection efficiency} of the particle gets. Therefore, the detection efficiency can be defined directly as the \textit{Purcell factor} \cite{dowling1991radiation}.
+When the light of the trapping beam hits the nanoparticle it will scatter parts of it. This scattered light forms a standing wave inside of the cavity, based on the modes that are available. The \textit{local density of optical states (LDOS)} describes the available modes. In a cavity the LDOS is enhanced by the \textit{Purcell effect}. This means that light will more likely generate modes in the region of the higher LDOS than outside of the cavity. The more light is coupled into the cavity the higher the \textit{detection efficiency} of the particle gets. Therefore, the detection efficiency can be defined directly as the \textit{Purcell factor} \cite{dowling1991radiation}.
 
 \begin{equation}
 	f=\frac{6\lambda^2}{\pi^3}\frac{\mathcal{F}}{w_0^2}

@@ -1,4 +1,4 @@
-%% Creator: Inkscape 0.91_64bit, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.3, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'inverted_microscope_svg-tex.pdf' (pdf, eps, ps)
 %%
@@ -35,8 +35,10 @@
     \renewcommand\transparent[1]{}%
   }%
   \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{226.4960265bp}%
+    \setlength{\unitlength}{334.4624063bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,8 +50,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.15723475)%
+  \begin{picture}(1,0.7836727)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{inverted_microscope_svg-tex.pdf}}%
-    \put(-0.01283135,0.65343314){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{move}}}%
+    \put(-0.00868932,0.44250115){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}move stamp\end{tabular}}}}%
+    \put(0.00160172,0.32835209){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}focal plane\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{inverted_microscope_svg-tex.pdf}}%
+    \put(0.70456759,0.39932379){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}move setup\end{tabular}}}}%
   \end{picture}%
 \endgroup%

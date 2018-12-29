@@ -50,21 +50,21 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.45271709)%
+  \begin{picture}(1,0.40523566)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{grinding_sketch_svg-tex.pdf}}%
-    \put(0.02023043,0.37581666){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}OrmoComp\end{tabular}}}}%
-    \put(0.02055299,0.30988795){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}glass coverslip\end{tabular}}}}%
+    \put(0.02023043,0.32498778){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}OrmoComp\end{tabular}}}}%
+    \put(0.02055299,0.25905907){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}glass coverslip\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{grinding_sketch_svg-tex.pdf}}%
-    \put(0.54529265,0.37581666){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}OrmoComp\end{tabular}}}}%
-    \put(0.5456152,0.30988795){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}glass coverslip\end{tabular}}}}%
-    \put(0.54428156,0.42230884){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}cleaning fluid\end{tabular}}}}%
+    \put(0.54529265,0.32498778){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}OrmoComp\end{tabular}}}}%
+    \put(0.5456152,0.25905907){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}glass coverslip\end{tabular}}}}%
+    \put(0.54428156,0.37147996){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}cleaning fluid\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{grinding_sketch_svg-tex.pdf}}%
     \put(0.28053503,0.12387888){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}OrmoComp\end{tabular}}}}%
     \put(0.28428066,0.06993081){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}glass coverslip\end{tabular}}}}%
-    \put(0.46379406,0.20271181){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}mirror\end{tabular}}}}%
-    \put(0.2647117,0.15551297){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}rough from grinding\end{tabular}}}}%
+    \put(0.46029125,0.16418099){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}mirror\end{tabular}}}}%
+    \put(0.75141384,0.13074444){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}rough from grinding\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{grinding_sketch_svg-tex.pdf}}%
   \end{picture}%
 \endgroup%
