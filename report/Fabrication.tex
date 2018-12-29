@@ -1,36 +1,36 @@
 \chapter{Fabrication}
 \section{Requirements}
-The main aim of this project is to establish a fabrication process for microcavity mirrors of medium-high finesse. As the microcavity will be implemented in a praticle trapping experiment it is essential to ensure geometrical compatibility between cavity and particle trap.
+The main aim of this project is to establish a fabrication process for microcavity mirrors of medium-high finesse. As the microcavity will be implemented in a praticle trapping experiment it is essential to ensure geometrical compatibility between cavity and dipole trap.
 
 \subsection{Cavity Length}\label{ChapCavityLength}
-As discussed in \autoref{ChapSensingFactor}, the sensing factor is a quantity which determines how strong the presence of a glass particle influences the optical properties of the cavity. \autoref{EqSensingFactor} is inversely proportional to the length of the cavity which was explained through the fact that a smaller mode volume will cause the volume of the nano-scaled, particle inside of the cavity to become larger in comparison to the mode volume.\\
-However, the cavity dimensions cannot be made arbitrarily small. At the minimum cavity length $L$, clipping losses of the trapping beam (see \autoref{Fig:FigBeamWidth}) need to be negligible. Clipping of the trapping beam would dramatically reduce its efficiency and cause scattering of energy into undesired modes. It would also heat up the cavity mirror.\\
+As discussed in \autoref{ChapSensingFactor}, the sensing factor is a quantity which determines how strong the presence of a glass particle influences the optical properties of the cavity. The sensing factor (\autoref{EqSensingFactor}) is inversely proportional to the length of the cavity.\\
+However, the cavity dimensions cannot be made arbitrarily small. At the minimum cavity length $L$, clipping losses of the trapping beam (see \autoref{Fig:FigBeamWidth}) need to be negligible. Clipping of the trapping beam creates an aberration of the dipole trap and heats up the cavity mirror. This changes the cavity length and prevents a stable lock. It may even destroy the mirror coating.\\
 \begin{figure}[H]
 	\includesvg[scale=0.7]{source/trapping_beam_width}
 	\caption{The figure shows a sketch of the trapping experiment. The green lines show the profile of the Gaussian mode. $z_{\si{T}}$ is the radius of the trapping beam (red). The trapping beam has an $\si{NA}$ of $0.8$. $z_{\si{m}}$ is the distance of the cavity mirror from the trapping beam's focus point.}
 	\label{Fig:FigBeamWidth}
 \end{figure}
-In the following discussion we will derive an analytical solution for the minimum cavity length given the trapping beams presence. Furthermore, the entire Gaussian mode cross section has to fit onto the mirror surface which dictates a minimum diameter $D$ for the mirrors. The problem ultimately boils down to minimizing $L$ while at the same time maximizing $D$ without intersecting with the trapping beam ($z_{\si{T}}$).\\
+In the following discussion we will derive an analytical solution for the minimum cavity length given the trapping beams presence. Furthermore, the entire Gaussian mode cross section has to fit onto the mirror surface in order to direct the hole available power onto the detector. This dictates a minimum diameter $D$ for the mirrors. The problem ultimately boils down to minimizing $L$ while at the same time maximizing $D$ without clipping the trapping beam ($z_{\si{T}}$).\\
 To know the limit for the mirror diameter $D$ we first need the trapping beam radius $z_{\si{T}}$. From \autoref{Fig:FigBeamWidth} we see that this radius can be described by the following formula:
 \begin{equation}\label{EqTrapRadius}
 	z_{\si{T}}(x)=x\tan\alpha
 \end{equation}
-Next we need to describe the mirror diameter $D$ in relation to the Gaussian beam. The beam waist radius of a Gaussian beam is given by:
+Next we need to describe the mirror diameter $D$ in relation to the Gaussian beam. The beam waist of a Gaussian beam is given by:
 \begin{equation}
 	w(z)=w_0\sqrt{1+\left(\frac{z}{z_{{\si{R}}}}\right)^2}
 \end{equation}
-where $z_{\si{R}}$ is the Rayleigh length. The Rayleigh length is given by the beam waist radius at the focus of the Gaussian beam and by its wavelength. We can now use this to determine $D$. Since the beam further diverges while leaving the cavity through the curved mirror the thickness of the mirror also needs to be considered. The additional length is summarized in the term $\delta$ (see \autoref{fig:DeltaDescriptionDCalc}).
+where $z_{\si{R}}$ is the Rayleigh length. The Rayleigh length is given by the beam waist of the Gaussian beam and its wavelength. We can now use this to determine $D$. Since the beam further diverges while leaving the cavity through the curved mirror the thickness of the mirror also needs to be considered. The additional length is summarized in the term $\delta$ (see \autoref{fig:DeltaDescriptionDCalc}).
 \begin{figure}[H]
 	\includesvg[scale=0.5]{source/delta_description_d_calc}
 	\caption{The thickness of the mirror consists of the mirror material itself ($25\um$) and a glass layer ($160\um$) where the mirror is fixed upon.}
 	\label{fig:DeltaDescriptionDCalc}
 \end{figure}
 
-To get the diameter from the radius we normally would multiply by two. However, to make sure that the entire beam hits the mirror we use a factor $\rho = 5$ instead. The diameter is then defined by:
+To get the diameter from the radius we normally would multiply by two. However, to make sure that the entire beam hits the mirror we use a factor $\rho = 5$ instead, this way practically no power of the beam is lost. The diameter is then defined by:
 \begin{equation}\label{BeamDiameter}
 	D(z_{\si{m}})=\rho\cdot w(z_{\si{m}}+\delta)
 \end{equation}
-Through simple algebra the mirror distance from the trapping beam focus is then given by:
+Through algebra the mirror distance from the trapping beam focus is then given by:
 \begin{equation}\label{EqMirrorDistance}
 	z_{\si{m}}(D)=z_{\si{R}}\sqrt{\left(\frac{D}{\rho w_0}\right)^2-1}-\delta
 \end{equation}
@@ -38,11 +38,11 @@ As stated at the beginning, we need to make $D$ as large as possible while keepi
 \begin{equation}\label{EqReqBeam}
 	2\cdot z_{\si{T}}(x=D/2)=z_{\si{m}}(D)
 \end{equation}
-Note that we put a factor two in front of the trapping beam radius for safety reasons. If we plug \autoref{EqMirrorDistance} and \autoref{EqTrapRadius} into \autoref{EqReqBeam} we get a quadratic equation which can be solved for $D$.
+Note that we put a factor two in front of the trapping beam radius because we require double of the beams minimum space requirement (see \autoref{fig:FigBeamWidth}). If we plug \autoref{EqMirrorDistance} and \autoref{EqTrapRadius} into \autoref{EqReqBeam} we get a quadratic equation which can be solved for $D$.
 \begin{equation}
 	D=\frac{-\delta\tan\alpha+\sqrt{\delta^2\tan^2\alpha -\left[\tan^2\alpha-\left(\frac{z_{\si{R}}}{\rho w_0}\right)^2\right]\left[\delta^2+z_{\si{R}}^2\right]}}{\tan^2\alpha-\left(\frac{z_{\si{R}}}{\rho w_0}\right)^2}
 \end{equation}
-Now we can estimate the cavity length $L=2\cdot z_{\si{m}}(D)+\delta$. To get actual numbers we have to fix the beam waist radius $w_0$ of the cavity mode at the focus. The estimated value for $w_0$ can range from $2\um$ to about $40\um$. In reality the focus width will be determined by the cavity dimensions themselves. To stay within the defined range of $w_0$ a cavity which has a length of $L\approx 500\um$ with mirrors of diameter $D\approx 200\um$ is a very robust choice.
+Now we can estimate the cavity length $L=2\cdot z_{\si{m}}(D)+\delta$. To get actual numbers we have to fix the beam waist $w_0$ of the cavity mode at the focus. The estimated value for $w_0$ can range from $2\um$ to about $40\um$. In reality the focus width will be determined by the cavity dimensions themselves. To stay within the defined range of $w_0$ a cavity which has a length of $L\approx 500\um$ with mirrors of diameter $D\approx 200\um$ is a very robust choice.
 
 \subsection{Radius of curvature}
 For a Gaussian mode to resonate inside the cavity the ROC (radius of curvature) of the beam has to match the curvature of the cavity mirror. Since we are using a half-symmetrical cavity, primarily for alignment reasons (see \autoref{ChapCavityStability}), we have one mirror without curvature and one mirror which is spherical. The wavefront radius of the beam depends on the cavity length $L$.
@@ -53,17 +53,17 @@ For a Gaussian mode to resonate inside the cavity the ROC (radius of curvature) 
 	\includesvg[scale=0.7]{source/wf_radius}
 	\caption{This figure shows the dependence of the ROC $R$ of the Gaussian beam on the cavity length $L$ at a fixed $w_0$.}
 \end{figure}
-\autoref{EqWfRadius} does also depend on the Rayleigh length $z_{\si{R}}$.
+The radius of curvature (\autoref{EqWfRadius}) also depends on the Rayleigh length $z_{\si{R}}$.
 \begin{equation}\label{EqRayleighRange}
 	z_{\si{R}}=\frac{\pi w_0^2}{\lambda}
 \end{equation}
-While discussing the cavity length in the last section it was stated that the beam waist radius at the origin is determined by the cavity dimensions and has a certain allowed range. This is the reason why the $R$ does not have to be exact but can vary between $0.7\mm$ to $1.0\mm$. This is very convenient for process stability as we will see later on.
+While discussing the cavity length in the last section it was stated that the beam waist and has no strict requirements. This is the reason why the $R$ does not have to be exact. We aim for a value from $0.7\mm$ to $1.0\mm$. This is very convenient for process stability as we will see later on.
 %\begin{equation}
 %	R(w_0)=z_{\si{m}}\left[1+\frac{\pi^2w_0^4}{\lambda^2z_{\si{m}}^2}\right]
 %\end{equation}
 
 \subsection{Surface roughness}
-The surface roughness of the cavity mirrors is of paramount importance while planning the fabrication of the microcavity mirrors. How the surface roughness influences the cavity losses is described by the following simple formula \cite{roy2011fabrication}:
+The surface roughness of the cavity mirrors is of crucial importance while planning the fabrication of the microcavity mirrors. How the surface roughness influences the cavity losses is described by the following formula \cite{roy2011fabrication}:
 \begin{equation}
 	L_{\si{sc}}=\left(\frac{4\pi\sigma_{\si{sc}}}{\lambda}\right)^2
 \end{equation}
@@ -76,8 +76,15 @@ It can be seen that the finesse degrades substantially with an increasing surfac
 	\includesvg[scale=0.7]{source/finesse_rms}
 	\caption{It can be seen how the finesse of the cavity degrades as a function of the surface roughness (RMS). From a roughness of $0.5\si{nm}$ to $1.5\si{nm}$ the finesse has already degraded by one order of magnitude.}
 \end{figure}
-As explained in \autoref{ChapInformationRetrievalRate}, the linewidth of the cavity has to be large enough such that the particle motion can be followed without much delay. This means the finesse cannot be too high. However, the lowering of the finesse has to take place through the light leaving the cavity through one of the mirrors and not through scattering losses due to rough mirror surfaces. For this reason the aim is to fabricate mirrors with a roughness below $0.6\nm$ which corresponds to scattering losses of less than $23.4\ppm$.
+As explained in \autoref{ChapInformationRetrievalRate}, the linewidth of the cavity has to be large enough such that the particle motion can be followed without much delay. This means the finesse cannot be too high. However, the lowering of the finesse has to take place through the light leaving the cavity through one of the mirrors and not through scattering losses due to rough mirror surfaces, since this light will not hit the detector. For this reason the aim is to fabricate mirrors with a roughness below $0.6\nm$ which corresponds to scattering losses of less than $23.4\ppm$.
+
+\section{Evaluated methods}
+We now know what requirements the cavity mirrors have to meet. Here we will briefly discuss different methods that were evaluated if they can be used for the fabrication process. In the end we settled on glass fibers being melted and used as a stamp for imprinting the mirrors into a polymer. At the start we investigated if the imprinting can be omitted entirely.\\
+A company called Swisslitho uses a technology called NanoFrazor where they let a very small cantilever remove parts of the substrate to obtain structures with details on the nano-scale. While promising it turned out that our micromirrors are too large for this fabrication method. For this reason the imprinting step had to be included in the fabrication process.\\
+Another alternative was to order smooth glass beads and do the imprinting with them. After contacting a company named CoSpheric it turned out that they do not have glass beads required with a specified surface roughness. This meant that we were not able omit the fabrication of our own stamps.\\
+The attempts made with different stamps than glass resulted in mirrors with an insufficiently smooth surface. In the end, the only stamps smooth enough were the once that we fabricated using the melting method which will be described in the coming sections.
 \newpage
+
 
 \section{Process}
 In the following section the fabrication process that was put together, based on extensive research with different fabrication approaches, will be described in detail.\\

@@ -2,7 +2,7 @@
 The aim of this chapter is to offer a brief introduction into the basics of particle trapping and cavity theory. Those ingredients are necessary to discuss the design choices made regarding the cavity mirrors. This has a big impact on the fabrication process which this project aims to develop. This chapter will by no means offer a complete picture nor a formal derivation of all the physics involved, but will highlight the important results made in more rigorous works concerned with the topics.
 
 \section{Laser trapping}\label{ChapLaserTrapping}
-At the heart of the experiment, which we want to improve by fabricating microcavity mirrors, is a levitated nanosphere which is made from siliciumdioxid. The trapping of the nanoparticle is achieved with a highly focused laser beam which effectively traps the particle. We speak of cooling because the motion of the particle is reduced by its isolation from the environment. If trapped in vacuum only residual air molecules will collide with the particle causing a certain randomness to its oscillating movement.
+At the heart of the experiment, which we want to improve by fabricating microcavity mirrors, is a levitated nanosphere which is made from SiO2. The trapping of the nanoparticle is achieved with a highly focused laser beam which effectively traps the particle. If trapped in vacuum, only residual air molecules will collide with the particle causing a certain randomness to its oscillating movement.
 
 \begin{figure}[H]
 	\includesvg[scale=0.5]{source/trapping}
@@ -17,15 +17,15 @@ The electric field in the equation stated above refers to the complex electric f
 \begin{equation}\label{EqFopt}
 	\field{E}{i}(\vc{r},t)=\Re\left\{\field{E}{i}(\vc{r})e^{-i\omega t}\right\}
 \end{equation}
-Where the angular frequency is defined as $\omega=2\pi c_0/\lambda$. The first part of \autoref{EqFopt} can be rewritten \cite[p.~457]{novotny2012principles}, such that it becomes obvious why this term is called the \textit{gradient force}.
+Where the angular frequency is defined as $\omega=2\pi c_0/\lambda$. $c_0$ here is the speed of light in vacuum. The first part of \autoref{EqFopt} can be rewritten \cite[p.~457]{novotny2012principles} in terms of a conservative potential called the \textit{gradient force}.
 \begin{equation}
 	\av{\field{F}{grad}}(\vc{r})=\frac{\alpha'}{4}\nabla\left(\field{E}{i}(\vc{R})\cdot\field{E}{i}^*(\vc{r})\right)=\frac{\alpha'}{2c_0\varepsilon_0}\nabla I(\vc{r})
 \end{equation} 
-This force scales with the gradient of the electric field intensity $I(\vc{r})$ \cite[p.~17]{hebestreit2017thermal}. The particles used in the experiment all have a polarizability with positive real part which means that they are attracted to intensity maxima. The formal treatment of the second term in \autoref{EqFopt} does not yield itself to the same transformation. It is called the \textit{scattering force}.
+This force scales with the gradient of the electric field intensity $I(\vc{r})$ \cite[p.~17]{hebestreit2017thermal}. The particles used in the experiment all have a polarizability with positive real part which means that they are attracted to intensity maxima. The non-conservative second term in \autoref{EqFopt} is called the \textit{scattering force}.
 \begin{equation}\label{EqScatteringForce}
 	\av{\field{F}{scat}}(\vc{r})=\frac{\alpha''}\omega\mu_0\av{\vc{S}}(\vc{r})-i\frac{\alpha''}{4}\left[\nabla\times\left(\field{E}{i}(\vc{r})\times\field{E}{i}(\vc{r})\right)\right]
 \end{equation}
-While the gradient force is conservative ($\nabla\times\av{\field{F}{grad}}=0$) and does not do any work on the particle the same cannot be said about the scattering force. The first term in \autoref{EqScatteringForce} points in the direction of the \textit{time averaged pointing vector} $\av{\vc{S}}$ which means the force pushes in the direction of the power flux. The second term has to do with the spin density of the light field \cite[p.~457]{novotny2012principles}.\\
+While the gradient force is conservative ($\nabla\times\av{\field{F}{grad}}=0$) and does not do any work on the particle the same cannot be said about the scattering force. The first term in \autoref{EqScatteringForce} points in the direction of the \textit{time averaged pointing vector} $\av{\vc{S}}$ which means the force pushes in the direction of the power flux.\\
 The electrostatic polarizablility of a spherical particle with permittivity $\varepsilon_{\si{p}}$ and radius $a$, surrounded by a material of permittivity $\varepsilon_{\si{m}}$ is given by \cite[p.~463]{novotny2012principles}:
 \begin{equation}
 	\alpha_{\si{p}}(\omega)=4\varepsilon_0\pi a^3\frac{\varepsilon_{\si{p}}(\omega)-\varepsilon_{\si{m}}(\omega)}{\varepsilon_{\si{p}}(\omega)+2\varepsilon_{\si{m}}(\omega)}
@@ -46,11 +46,11 @@ Once the particle is trapped inside the beam it oscillates with a resonance freq
 	m\ddot{\vc{r}}(t)+m\gamma\dot{\vc{r}}(t)+\field{F}{grad}(t)=\field{F}{fluct}(t)+\field{F}{scat}(t)+\sum\limits\vc{F}
 \end{equation}
 Since there are still air molecules around the particle we have a damping with damping rate $\gamma$. $\field{F}{fluct}$ is the total fluctuating force. The last term represents all the additional forces that may act on the particle. From this equation the resonance frequency $\de{\Omega}{mech}$ of the particle can be extracted.\\
-With the knowledge about the particles movement the cooling aims can counteract it. This means that once the particle moves away from a defined center point, the feedback mechanism tells the setup to readjust. Since the oscillations of the particle are taking place in the nanometer regime, this can be implemented by moving the trapping laser with a piezo-stage. \autoref{fig:PiezoCooling} shows a schematic depiction on how the laser is mounted onto the piezo-stage. However, this figure only depicts the detection-scheme symbolically as the specific form of detection will be discussed in the next section.
+With the knowledge about the particles movement a feedback mechanism can be used to counteract it. This means that once the particle moves away from a defined center point, the feedback mechanism tells the setup to readjust. To adjust the setup, the laser intensity is changed. Changing the laser intensity effectively changes the traps stiffness. In \autoref{fig:EomCooling} it can be seen that an electro-optic-modulator is used to change the intensity of the trapping beam. The feedback mechanism in this figure is at this point a "black-box" and will be examined more closely in the next section.
 \begin{figure}[H]
-    \includesvg[scale=0.23]{source/piezo_cooling}
+    \includesvg[scale=0.23]{source/img_eom_cooling}
     \caption{This illustration shows the setup with an arbitrary detection mechanism and a blackbox which controls the piezo-stage the laser is mounted upon. In reality the setup is placed within a vacuum chamber and detection schemes which are based on the trapping beam itself are usually made of multiple photo-diodes to capture the movement in all three spatial directions \cite[p.~43]{hebestreit2017thermal}.}
-    \label{fig:PiezoCooling}
+    \label{fig:EomCooling}
 \end{figure}
 
 \section{Cavity particle detection}\label{ChapCavityDetection}
@@ -59,15 +59,15 @@ Cavities are made from two aligned mirrors as depicted in \autoref{fig:CavityDet
 
 \begin{figure}[H]
 	\includesvg[scale=0.7]{source/cavity_detection_principle}
-	\caption{This figure shows a standing wave inside of a cavity. The resonance of the cavity is $\de{\omega}{c}$. Through the introduction of the particle into the cavity, the refractive index changes partly. Since light travels slower in glass than in vacuum the resonance frequency shifts by the small frequency offset $\Delta\omega$.}
+	\caption{This figure shows a standing wave inside of a cavity. The resonance of the cavity is $\de{\omega}{c}$. Through the introduction of the particle into the cavity, the refractive index changes locally. Since light travels slower in glass than in vacuum the resonance frequency shifts by the small frequency offset $\Delta\omega$.}
 	\label{fig:CavityDetection}
 \end{figure}
 
 When a glass particle is inserted into the cavity it will change the material composition of the cavity. Now the light travels through vacuum and additionally through glass in which it travels slower. This effect results in a longer optical path length and therefore in the shift to a lower resonance frequency $\de{\omega}{c}-\Delta\omega$, $\de{\omega}{c}$ being the cavity resonance frequency without particle. The influence $\Delta\omega$ of the particle directly depends on the ratio between the cavity volume and the volume of the particle \cite{chang2010cavity}.
 \begin{equation}\label{EqFreqShift}
-	\Delta\omega=\frac{3\de{V}{p}}{4\de{V}{c}}\frac{\de{\varepsilon}{p}-1}{\de{\varepsilon}{p}+2}=\frac{\pi a^3}{\de{V}{c}}\frac{\de{\varepsilon}{p}-1}{\de{\varepsilon}{p}+2}
+	\Delta\omega=\frac{3\de{V}{p}}{4\de{V}{c}}\frac{\de{\varepsilon}{p}-1}{\de{\varepsilon}{p}+2}\cos(2kz-2\phi)\de{\omega}{c}=\frac{\pi a^3}{\de{V}{c}}\frac{\de{\varepsilon}{p}-1}{\de{\varepsilon}{p}+2}\cos(2kz-2\phi)\de{\omega}{c}
 \end{equation}
-Where $a$ is the radius of the glass particle and $\de{\varepsilon}{p}\approx 3.9$ its relative, dielectric permittivity. The last equality in \autoref{EqFreqShift} comes from the fact that the particle is considered to be spherical.
+Where $k$ is the wavevector of the cavity mode, $z$ the position inside the cavity $\phi$ the Gouy phase, $a$ is the radius of the glass particle and $\de{\varepsilon}{p}\approx 3.9$ its relative, dielectric permittivity. The last equality in \autoref{EqFreqShift} comes from the fact that the particle is considered to be spherical.
 
 \begin{figure}[H]
 	\includesvg[scale=0.6]{source/cavity_detuning_plot}
@@ -75,7 +75,7 @@ Where $a$ is the radius of the glass particle and $\de{\varepsilon}{p}\approx 3.
 	\label{fig:FreqShift}
 \end{figure}
 
-We have seen that the system's sensitivity can be controlled with the parameter $\Delta\omega$. The question now still remains how we can determine the particles offset from the center position. For measurements we have a photo-diode placed at one end of the cavity. We now want to show how the particles offset can be determined by looking at the intensity of the transmitted light. In principle we would need to look at the dipole radiation of the nanoparticle that is scattered into the cavity and calculate the mode overlap \cite{chang2010cavity}. For simplicity we look at the intensity profile inside of the cavity and consider the overlap integral as being only dependent on the position of the particle inside of this intensity distribution.
+We have seen that the system's sensitivity can be controlled with the parameter $\Delta\omega$. The question now still remains how we can determine the particles offset from the center position, defined as the nearest intensity maximum, from where the particle is trapped. For measurements we have a photo-diode placed at one end of the cavity. We now want to show how the particles offset can be determined by looking at the intensity of the transmitted light. In principle we would need to look at the dipole radiation of the nanoparticle that is scattered into the cavity and calculate the mode overlap \cite{chang2010cavity}. For simplicity we look at the intensity profile inside of the cavity and consider the overlap integral as being only dependent on the position of the particle inside of this intensity distribution.
 
 \begin{equation}
 	I(z)=I_0w_0^2\left[1+\left(\frac{z}{\de{z}{R}}\right)^2\right]\cos^2(kz)
@@ -85,7 +85,7 @@ Qualitatively, if the overlap is taken at a position where the intensity of the 
 
 \begin{figure}[H]
 	\includesvg[scale=0.7]{source/particle_pos_intensity}
-	\caption{This plot shows the intensity at the detector changes even if the particle has an offset of only several nanometers. This enables feedback cooling with a cavity as detection-mechanism. The intensity $I_0$ refers to the intensity that is measured if the particle is at the center position, not the maximum intensity.}
+	\caption{This plot shows that the intensity at the detector changes even if the particle has an offset of only several nanometers. This enables feedback cooling with a cavity as detection-mechanism. The intensity $I_0$ refers to the intensity that is measured if the particle is at the nearest local intensity maximum, not the global maximum intensity.}
 \end{figure}
 
 As can be seen, it is easily possible to detect even very small positional offsets with the cavity. In the spectrum we rely on a big enough $\Delta\omega$ to get a distinct resonance for the particle. This ultimately motivates why we want to fabricate microcavities.\\
@@ -110,7 +110,7 @@ If this condition is plotted (see \autoref{fig:CavityStabilityDiagram}) it can b
 	\label{fig:CavityStabilityDiagram}
 \end{figure}
 
-From this we see that the concentric cavity might have the smallest mode volume, but it is also obvious that a small misalignment will lead to an unstable cavity. Choosing instead a \textit{half-symmetrical cavity} leads to a bigger mode volume but at the same time the two $g$-parameters do not have to be matched exactly during alignment. This makes the half-symmetrical cavity much better for the implementation in a real setup. One might argue that one drawback of the half-symmetrical cavity is that at the location where the nanoparticle will sit, the local maximum is not as high as in symmetrical cavities. This means that the intensity seen on the detector will therefore be weaker. While this argument is valid in principle it has to be considered that the beam divergence inside the microcavity is almost negligible from the point of view of the intensity distribution, because the cavity is very short (the cavity length is close to the Rayleigh length). This means that the drawback is negligible.
+From this we see that the concentric cavity has the smallest mode volume, but also that a small misalignment will lead to an unstable cavity. Choosing instead a \textit{half-symmetrical cavity} leads to a bigger mode volume but at the same time the two $g$-parameters do not have to be matched exactly during alignment. This makes the half-symmetrical cavity much better for the implementation in a real setup. One drawback of the half-symmetrical cavity is that a nanoparticle, positioned in the middle of the cavity, is not located at the cavity mode's focus. Since the cavity is on the same scale as the Rayleigh length, this effect is negligible.
 
 \section{Figures of merit}
 Previously we looked at how small cavities can be utilized to detect the offset of a nanoparticle. To asses what requirements such a cavity has to meet we need to have some figures of merit. This section will introduce three important figures of merit and briefly explain how they influence the cavity design.
@@ -149,7 +149,7 @@ To get this quantity in different terms we look at the situation at hand. Our ha
 If we plug this into \autoref{EqFreqShift} and \autoref{EqS} we get:
 
 \begin{equation}\label{EqSensingFactor}
-	S=\frac{6V}{\lambda^2}\frac{\de{\varepsilon}{p}-1}{\de{\varepsilon}{p}+2}\frac{\mathcal{F}}{L}\propto\frac{\mathcal{F}}{L}
+	S=\frac{6V}{\lambda^2}\frac{\de{\varepsilon}{p}-1}{\de{\varepsilon}{p}+2}\cos(2kz-2\phi)\de{\omega}{c}\frac{\mathcal{F}}{L}\propto\frac{\mathcal{F}}{L}
 \end{equation}
 
 \subsection{Detection efficiency}
