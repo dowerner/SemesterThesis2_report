@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.18)  29 DEC 2018 22:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.18)  30 DEC 2018 19:14
 entering extended mode
 **./Thesis.tex
 (Thesis.tex
@@ -2234,7 +2234,7 @@ Package pdftex.def Info: ./svg-inkscape/inverted_microscope_svg-tex.pdf , page2
 Package pdftex.def Info: Requested size: 218.21375pt x 171.01176pt on input lin
 e 59.
 )
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 8038) has occurred while \output is active []
 
  [29 <./svg-inkscape/inverted_microscope_svg-tex.pdf> <./svg-inkscape/inverted_
 microscope_svg-tex.pdf
@@ -2410,6 +2410,10 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 95.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 95.
 Package rerunfilecheck Info: File `Thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 32031F9B6DA9AEA06016DDC21DAC6307;2611.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 95.
  ) 
 Here is how much of TeX's memory you used:
@@ -2441,7 +2445,7 @@ grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/dominik/App
 Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Us
 ers/dominik/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 tt10.pfb>
-Output written on Thesis.pdf (53 pages, 8554952 bytes).
+Output written on Thesis.pdf (53 pages, 8554729 bytes).
 PDF statistics:
  2205 PDF objects out of 2487 (max. 8388607)
  452 named destinations out of 1000 (max. 500000)
