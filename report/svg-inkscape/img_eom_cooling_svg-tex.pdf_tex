@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{1039.36174586bp}%
+    \setlength{\unitlength}{1543.45829809bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,15 +50,19 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.69179938)%
+  \begin{picture}(1,0.38957952)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{img_eom_cooling_svg-tex.pdf}}%
-    \put(-0.00169876,0.66840762){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}electro-optic-modulator\end{tabular}}}}%
-    \put(0.2222756,0.55105414){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Trapping-laser\end{tabular}}}}%
-    \put(0.6807987,0.50707109){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Detector-mechanism\end{tabular}}}}%
+    \put(0.08301797,0.36351752){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}electro-optic-modulator\end{tabular}}}}%
+    \put(0.43862662,0.37382756){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}objective\end{tabular}}}}%
+    \put(0.78450381,0.34146066){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Detector-mechanism\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{img_eom_cooling_svg-tex.pdf}}%
-    \put(0.30139361,0.2404641){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Feedback-mechanism\end{tabular}}}}%
+    \put(0.52901317,0.16192805){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Feedback-mechanism\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{img_eom_cooling_svg-tex.pdf}}%
+    \put(0.0079996,0.32411978){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}laser\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{img_eom_cooling_svg-tex.pdf}}%
+    \put(0.28594928,0.1770039){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}polarization-filter\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{img_eom_cooling_svg-tex.pdf}}%
   \end{picture}%
 \endgroup%

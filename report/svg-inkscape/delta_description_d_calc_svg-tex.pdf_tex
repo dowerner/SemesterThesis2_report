@@ -1,4 +1,4 @@
-%% Creator: Inkscape 0.91_64bit, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.3, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'delta_description_d_calc_svg-tex.pdf' (pdf, eps, ps)
 %%
@@ -35,8 +35,10 @@
     \renewcommand\transparent[1]{}%
   }%
   \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{506.83164322bp}%
+    \setlength{\unitlength}{506.83168028bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,11 +50,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.41310745)%
+  \begin{picture}(1,0.38493374)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{delta_description_d_calc_svg-tex.pdf}}%
-    \put(0.03615348,0.22785263){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{OrmoComp}}}%
-    \put(0.03590111,0.12655983){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{glass coverslip}}}%
-    \put(0.37747253,0.37113406){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Mirror}}}%
+    \put(0.03615348,0.22785262){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}OrmoComp\end{tabular}}}}%
+    \put(0.03590111,0.12655982){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}glass coverslip\end{tabular}}}}%
+    \put(0.37747253,0.34449795){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Mirror\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{delta_description_d_calc_svg-tex.pdf}}%
   \end{picture}%
 \endgroup%

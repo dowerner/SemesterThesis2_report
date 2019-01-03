@@ -19,14 +19,20 @@ Next we need to describe the mirror diameter $D$ in relation to the Gaussian bea
 \begin{equation}
 	w(z)=w_0\sqrt{1+\left(\frac{z}{z_{{\si{R}}}}\right)^2}
 \end{equation}
-where $z_{\si{R}}$ is the Rayleigh length. The Rayleigh length is given by the beam waist of the Gaussian beam and its wavelength. We can now use this to determine $D$. Since the beam further diverges while leaving the cavity through the curved mirror the thickness of the mirror also needs to be considered. The additional length is summarized in the term $\delta$ (see \autoref{fig:DeltaDescriptionDCalc}).
+where $z_{\si{R}}$ is the Rayleigh length. The Rayleigh length is given by the beam waist of the Gaussian beam and its wavelength. We use this to determine $D=\rho\cdot w$. To continue we also need $\rho$. $\rho$ has to be sufficiently large to minimize clipping losses. The clipping losses are obtained by integrating the intensity of the beam over the portion that misses the mirror.
+
+\begin{equation}
+	\de{L}{clipping}=\int\limits_D^\infty \exp\left(-\frac{\tau^2}{2w^2}\right)d\tau=1-\erf\left(\frac{D}{\sqrt{2}w}\right)
+\end{equation}
+Where $\erf$ refers to the error-function. From the definition of the clipping losses we see that $\rho=5$ leads to $\de{L}{clipping}<1\ppm$ which is sufficient.\\
+Since the beam further diverges while leaving the cavity through the curved mirror the thickness of the mirror also needs to be considered. The additional length is summarized in the term $\delta$ (see \autoref{fig:DeltaDescriptionDCalc}).
 \begin{figure}[H]
 	\includesvg[scale=0.5]{source/delta_description_d_calc}
 	\caption{The thickness of the mirror consists of the mirror material itself ($25\um$) and a glass layer ($160\um$) where the mirror is fixed upon.}
 	\label{fig:DeltaDescriptionDCalc}
 \end{figure}
 
-To get the diameter from the radius we normally would multiply by two. However, to make sure that the entire beam hits the mirror we use a factor $\rho = 5$ instead, this way practically no power of the beam is lost. The diameter is then defined by:
+The diameter $D$ is then defined by:
 \begin{equation}\label{BeamDiameter}
 	D(z_{\si{m}})=\rho\cdot w(z_{\si{m}}+\delta)
 \end{equation}
@@ -50,7 +56,7 @@ For a Gaussian mode to resonate inside the cavity the ROC (radius of curvature) 
 	R(L)=L\left[1+\left(\frac{z_{\si{R}}}{L}\right)^2\right]
 \end{equation}
 \begin{figure}[H]
-	\includesvg[scale=0.7]{source/wf_radius}
+	\includesvg[scale=0.6]{source/wf_radius}
 	\caption{This figure shows the dependence of the ROC $R$ of the Gaussian beam on the cavity length $L$ at a fixed $w_0$.}
 \end{figure}
 The radius of curvature (\autoref{EqWfRadius}) also depends on the Rayleigh length $z_{\si{R}}$.
@@ -69,7 +75,7 @@ The surface roughness of the cavity mirrors is of crucial importance while plann
 \end{equation}
 The finesse which defines what portion of the light remains inside of the cavity after one round trip is defined as \cite{roy2011fabrication}:
 \begin{equation}
-	\mathcal{F}=\frac{2\pi}{2(L_{\si{sc}}+T+A)}
+	\mathcal{F}=\frac{2\pi}{2(L_{\si{sc}}+\de{L}{clipping}+T+A)}
 \end{equation}
 Where $T$ is the transmission through the mirrors and $A$ the absorption. It can be seen that the finesse degrades substantially with an increasing surface roughness.
 \begin{figure}[H]
